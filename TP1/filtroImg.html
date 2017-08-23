@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>filtro imagen</title>
+</head>
+<body>
+  <div>
+    <button type="button" name="button" onclick="filtroByN()">blanco y negro</button>
+  </div>
+  <div>
+    <canvas id="canvas" width="900" height="600" style="border:#000 solid 1px;"/>
+  </div>
+</body>
+
+<script>
+var ctx = document.getElementById("canvas").getContext("2d");
+var image = new Image(); //crea una imagen vacia
+image.src = "ap.png"; //le paso el src de la img
+
+image.onload = function() { //onload, espera a que termine de cargar la imagen y dsp llama a la funcion que la muestra
+  myDrawImageMethod(this);
+}
+
+function myDrawImageMethod(image) {
+    ctx.drawImage(image,0,0); //coordenadas de la imagen, en este caso superior izq
+}
+
+//accedo a cada pixel. 0 = r , 1 = g , 2 = b.
+
+function getRed(imageData,x,y) {
+  index = (x + y * imageData.width) * 4;
+  return imageData.data[index+0];
+}
+
+function getGreen(imageData,x,y) {
+  index = (x + y * imageData.width) * 4;
+  return imageData.data[index+1];
+}
+
+function getBlue(imageData,x,y) {
+  index = (x + y * imageData.width) * 4;
+  return imageData.data[index+2];
+}
+
+
+// function filtroByN(){
+//     image=image1;
+//     imageData = ctx.getImageData(0,0,image.width,image.height);
+//      for(y=0; y<image.height; y++){
+//        for(x=0; x<image.width; x++){
+//            var pixelbyn= Math.floor(getRed(imageData,x,y)+getGreen(imageData,x,y)+getBlue(imageData,x,y)/3);
+//            setPixel(imageData,x,y,pixelbyn,pixelbyn,pixelbyn,255);
+//        }
+//      }
+//       ctx.putImageData(imageData,0,0);
+//   }
+
+
+function setPixel(imageData,x,y,r,g,b,a) {
+  index = (x + y * imageData.width) * 4;
+  imageData.data[index + 0] = r;
+  imageData.data[index + 1] = g;
+  imageData.data[index + 2] = b;
+  imageData.data[index + 3] = a;
+}
+function filtroByN() {
+  imgByN = image;
+  imageData = ctx.getImageData(0,0,imgByN.width, imgByN.height);
+    for (var x = 0; x < imgByN.width; x++) {
+      for (var y = 0; y < imgByN.height; y++) {
+      var blancoYnegro = Math.floor(getRed(imageData,x,y) + getGreen(imageData,x,y) + getBlue(imageData,x,y)/3);
+      setPixel(imageData, x, y, blancoYnegro,blancoYnegro,blancoYnegro,255);
+      }
+  }
+  ctx.putImageData(imageData,0,0);
+}
+
+</script>
+</html>
