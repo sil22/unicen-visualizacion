@@ -13,28 +13,43 @@
   <title>Ejercicio Entregable</title>
 </head>
 <body>
-  <div class="container-fluid">
+  <div class="container-fluid contImg">
     <div class="row">
       <div class="col-md-12">
-        <div class="col-md-2">
-          <div class="form-group">
-            <label for="selectFoto">Selecciona una foto</label>
-            <input type="file" id="inputFile1" onclick="init()">
-          </div>
+        <div class="col-md-6 col-md-offset-3 text-center title">
+        <h3>Modificá tus imágenes online!</h3>
         </div>
-        <div class="col-md-4" style="display:none">
+
+        <div class="col-md-4 select">
+            <h3><label for="selectFoto">Selecciona una foto</label></h3>
+            <input type="file" id="inputFile1" onclick="init()">
+        </div>
+        <div class="col-md-6">
+          <a href="#" id="descargar" download="fotoConFiltro.png"><button type="button" style"float:rigth" class="btn btn-default descargar" name="button">Descargar</button></a>
+        </div>
+        <div style="display:none">
           <img id="img1">
         </div>
       </div>
-      <div class="col-md-6">
-        <canvas id="canvas" width="800" height="600" style="border:#000 solid 1px;"></canvas>
+      <div class="col-md-7">
+        <canvas id="canvas" class="img-rounded img-thumbnail img-responsive" width="800" height="400"></canvas>
       </div>
-      <div class="col-md-6">
-        <button type="button" class="btn btn-default" name="button" onclick="filtroByN()">Blanco y negro</button>
-        <button type="button" class="btn btn-default" name="button" onclick="filtroSepia()">Sepia</button>
-        <button type="button" class="btn btn-default" name="button" onclick="filtroNegativo()">Negativo</button>
-        <label>Contraste <input type="range" id="contrast" min="-90" max="90" step="5" value="0"></label>
+      <div class="col-md-2">
+        <ul>
+          <li><button type="button" class="btn btn-default" name="button" onclick="filtroByN()">Blanco y negro</button></li>
+          <li><button type="button" class="btn btn-default" name="button" onclick="filtroBinarizacion()">Binarizacion</button></li>
+          <li><button type="button" class="btn btn-default" name="button" onclick="filtroSepia()">Sepia</button></li>
+          <li><button type="button" class="btn btn-default" name="button" onclick="filtroNegativo()">Negativo</button></li>
+          <li><label>Contraste <input type="range" id="contrast" min="-90" max="90" step="1" value="0"></label>
 
+      </ul>
+      </div>
+      <div class="col-md-2">
+        <ul>
+          <li><button type="button" class="btn btn-default" name="button" onclick="blurByN()">Blur blanco y negro</button></li>
+          <li><button type="button" class="btn btn-default" name="button" onclick="saturar()">saturacion</button></li>
+
+        </ul>
       </div>
     </div>
 

@@ -1,7 +1,7 @@
 //cargar imagen
 var ctx = document.getElementById("canvas").getContext("2d");
 var contrast = document.getElementById("contrast");// input de tipo rango
-
+var canvas = document.getElementById("canvas");
 var img = new Image(); //crea una imagen vacia
 
 function myDrawImageMethod(image) {
@@ -20,12 +20,15 @@ function mostrarImagen(event) {
     img = document.getElementById('img1');
     img.src= event.target.result;
     img.onload = function(){
+      //adapto las dimensioness del canvas a la img
+      canvas.width = img.width;
+      canvas.height = img.height;
+      //llamo al metodo q dibuja la img en el canvas
       myDrawImageMethod(img);
     }
   }
   reader.readAsDataURL(file);
 }
-
 
 function getRed(imageData,x,y) {
   index = (x + y * imageData.width) * 4;
@@ -54,7 +57,7 @@ function filtroByN() {
   imageData = ctx.getImageData(0,0,img.width,img.height);
   for (var x = 0; x < img.width; x++) {
     for (var y = 0; y < img.height; y++) {
-      var blancoYnegro = Math.floor(getRed(imageData,x,y) + getGreen(imageData,x,y) + getBlue(imageData,x,y)/3);
+      var blancoYnegro = getRed(imageData,x,y) + getGreen(imageData,x,y) + getBlue(imageData,x,y)/3;
       setPixel(imageData, x, y, blancoYnegro,blancoYnegro,blancoYnegro,255);
     }
   }
@@ -84,12 +87,10 @@ function filtroSepia() {
   ctx.putImageData(imageData,0,0);
 }
 
-function AddContrast(val) {
+function contraste(val) {
 
-  //combino la formula para obtener el contraste con el valor obtenido del elemento ranges
+  //formula para obtener el contraste con el valor obtenido del elemento ranges
   var contrast = Math.tan(val * Math.PI / 180.0);
-
-  // obtenemos el ImageData
   imageData = ctx.getImageData(0,0,img.width,img.height);
   for (var x = 0; x < img.width; x++) {
     for (var y = 0; y < img.height; y++) {
@@ -114,5 +115,63 @@ function rangeColor(pix) {
 // evento que se ejecuta cada vez que aumentamos o decrementamos el contraste
 contrast.addEventListener('change', function() {
   var val = parseInt(this.value);
-  AddContrast(val);
+  contraste(val);
+});
+
+function filtroBinarizacion(){
+  imageData = ctx.getImageData(0,0,img.width,img.height);
+  for (x = 0 ; x < img.width; x ++){
+    for (y = 0; y < img.height; y ++){
+      var red = (getRed(imageData,x,y));
+      var green = (getGreen(imageData,x,y));
+      var blue = (getBlue(imageData,x,y));
+      var gray =  (0.299 * red + 0.587 * green + 0.114 * blue);
+
+      if(rangeColor(gray) > 128) {
+        r = 255;
+        g = 255;
+        b = 255;
+      }
+      else {
+        r = 0;
+        g = 0;
+        b = 0;
+      }
+      setPixel(imageData,x,y,r,g,b,255);
+    }
+  }
+  ctx.putImageData(imageData,0,0);
+}
+
+
+function saturar(){
+
+imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+
+for (x=0 ; x<canvas	.width; x++){
+  for (y=0; y<canvas.height; y++){
+
+    var r=getRed(imageData,x,y);
+    var g=getGreen(imageData,x,y);
+    var b=getBlue(imageData,x,y);
+    var rgb=[r,g,b];
+    var hsv= RGBtoHSV (rgb);
+    hsv[1] *= 2.2;
+    var rgb= HSVtoRGB(hsv);
+    r=rgb[0];
+    g=rgb[1];
+    b=rgb[2];
+
+    setPixel(imageData,x,y,r,g,b,255);
+  }
+}
+  ctx.putImageData(imageData,0,0);
+}
+
+
+//descargar img
+var button = document.getElementById('descargar');
+button.addEventListener('click', function (e) {
+    var dataURL = canvas.toDataURL('image/png');
+    button.href = dataURL;
 });

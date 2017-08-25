@@ -1,3 +1,44 @@
 body {
-  background-color: rgba(236, 221, 22, 0.34);
+  background-image: url("../AA1.jpg");
+  color: white;
+}
+.title{
+  background-color: black;
+  opacity: 0.8;
+}
+
+li {
+  list-style: none;
+  padding: 10px;
+}
+
+#canvas, .select {
+  margin-left: 50px;
+}
+
+a {
+  color: black;
+}
+
+.btn-default {
+  padding: 15px;
+  width: 200px;
+  box-shadow: 8px 8px 8px #000;
+}
+
+#canvas {
+  border: black solid 6px;
+}
+
+.select>ul>li {
+  display: table-cell;
+}
+
+#descargar {
+  float: right;
+  padding-top: 15px;
+}
+
+.descargar {
+  background-color: green;
 }
