@@ -32,26 +32,34 @@
         </div>
       </div>
       <div class="col-md-7">
-        <canvas id="canvas" class="img-rounded img-thumbnail img-responsive" width="800" height="400"></canvas>
+        <canvas id="canvas" class="img-rounded img-responsive" width="800" height="400"></canvas>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-5">
+        <h4 class="text-center title">Filtros aplicables!</h4>
+
+      <div class="col-md-6">
         <ul>
           <li><button type="button" class="btn btn-default" name="button" onclick="filtroByN()">Blanco y negro</button></li>
           <li><button type="button" class="btn btn-default" name="button" onclick="filtroBinarizacion()">Binarizacion</button></li>
           <li><button type="button" class="btn btn-default" name="button" onclick="filtroSepia()">Sepia</button></li>
-          <li><button type="button" class="btn btn-default" name="button" onclick="filtroNegativo()">Negativo</button></li>
-          <li><label>Contraste <input type="range" id="contrast" min="-90" max="90" step="1" value="0"></label>
 
       </ul>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-6">
         <ul>
-          <li><button type="button" class="btn btn-default" name="button" onclick="blurByN()">Blur blanco y negro</button></li>
-          <li><button type="button" class="btn btn-default" name="button" onclick="saturar()">saturacion</button></li>
+          <li><button type="button" class="btn btn-default" name="button" onclick="filtroNegativo()">Negativo</button></li>
+          <li><button type="button" class="btn btn-default" name="button" onclick="filtroSaturacion()">saturacion</button></li>
+          <li><label for="contrast" class="contrast text-center">Contraste <input type="range" id="contrast" min="1" max="100" step="1" value="0"></label>
 
         </ul>
       </div>
+      <div class="col-md-6 col-md-offset-4">
+        <button type="button" class="btn btn-default imgOrg" name="button" onclick="imageOriginal()">Imagen Original</button>
+
+      </div>
+
     </div>
+
 
   </div>
 

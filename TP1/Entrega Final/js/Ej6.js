@@ -3,9 +3,14 @@ var ctx = document.getElementById("canvas").getContext("2d");
 var contrast = document.getElementById("contrast");// input de tipo rango
 var canvas = document.getElementById("canvas");
 var img = new Image(); //crea una imagen vacia
+var imgOriginal = new Image();
 
 function myDrawImageMethod(image) {
   ctx.drawImage(image,0,0);
+}
+
+function imageOriginal() {
+  myDrawImageMethod(imgOriginal);
 }
 
 function init() {
@@ -14,11 +19,15 @@ function init() {
 }
 
 function mostrarImagen(event) {
+
   var file = event.target.files[0];
   var reader = new FileReader();
+
   reader.onload = function(event) {
     img = document.getElementById('img1');
     img.src= event.target.result;
+    imgOriginal.src = img.src;
+
     img.onload = function(){
       //adapto las dimensioness del canvas a la img
       canvas.width = img.width;
@@ -57,8 +66,8 @@ function filtroByN() {
   imageData = ctx.getImageData(0,0,img.width,img.height);
   for (var x = 0; x < img.width; x++) {
     for (var y = 0; y < img.height; y++) {
-      var blancoYnegro = getRed(imageData,x,y) + getGreen(imageData,x,y) + getBlue(imageData,x,y)/3;
-      setPixel(imageData, x, y, blancoYnegro,blancoYnegro,blancoYnegro,255);
+      var bn = (getRed(imageData,x,y) + getGreen(imageData,x,y) + getBlue(imageData,x,y)/3);
+      setPixel(imageData, x, y, bn, bn, bn, 255);
     }
   }
   ctx.putImageData(imageData,0,0);
@@ -143,31 +152,118 @@ function filtroBinarizacion(){
   ctx.putImageData(imageData,0,0);
 }
 
+// Filtro Saturacion
+function filtroSaturacion(){
+  imageData = ctx.getImageData(0,0,img.width,img.height);
 
-function saturar(){
+  for (x = 0 ; x < img.width; x++){
+    for (y = 0; y < img.height; y++){
 
-imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
-
-for (x=0 ; x<canvas	.width; x++){
-  for (y=0; y<canvas.height; y++){
-
-    var r=getRed(imageData,x,y);
-    var g=getGreen(imageData,x,y);
-    var b=getBlue(imageData,x,y);
-    var rgb=[r,g,b];
-    var hsv= RGBtoHSV (rgb);
-    hsv[1] *= 2.2;
-    var rgb= HSVtoRGB(hsv);
-    r=rgb[0];
-    g=rgb[1];
-    b=rgb[2];
-
-    setPixel(imageData,x,y,r,g,b,255);
+      var r=getRed(imageData,x,y);
+      var g=getGreen(imageData,x,y);
+      var b=getBlue(imageData,x,y);
+      //guardo las tres variables en un arr
+      var rgb=[r,g,b];
+      //convierto rgb en hsv
+      var hsv= rgbToHsv(rgb);
+      hsv[1] *= 2.2; //en saturacion le multiplico un valor predeterminado
+      //vuelvo hsv a rgb
+      var rgb= hsvToRgb(hsv);
+      r=rgb[0];
+      g=rgb[1];
+      b=rgb[2];
+      setPixel(imageData,x,y,r,g,b,255);
+    }
   }
-}
-  ctx.putImageData(imageData,0,0);
+    ctx.putImageData(imageData,0,0);
 }
 
+function rgbToHsv(color) {
+        var red,green,blue,hue,saturation,value;
+        red= color[0];
+        green= color[1];
+        blue= color[2];
+        min = Math.min(red, green, blue);
+        max = Math.max(red, green, blue);
+        delta = max - min;
+
+        if(max != 0){
+            saturation = delta / max;
+          }
+        else {
+            saturation = 0;
+            hue = -1;
+            return [hue, saturation, undefined];
+        }
+        if(red === max) {
+            hue = (green - blue) / delta;
+          }      // between yellow & magenta
+        else if( green === max )
+            hue = 2 + (blue - red) / delta;  // between cyan & yellow
+        else
+            hue = 4 + (red - green) / delta;  // between magenta & cyan
+            hue = hue * 60;                // degrees
+        if( hue < 0 ){
+            hue += 360;
+          }
+        if (isNaN(hue)) {
+            hue = 0
+        }
+        value = max;
+
+        return [hue,saturation,value];
+    }
+
+    function hsvToRgb(color) {
+        var i,hue,saturation,value,red,green,blue;
+        hue= color[0];
+        saturation= color[1];
+        value= color[2];
+        if(saturation === 0 ) {
+            // achromatic (grey)
+            red = green = blue = value;
+            return [red,green,blue];
+        }
+        hue = hue/60;
+        i = Math.floor(hue);
+        f = hue - i;
+        p = value * ( 1 - saturation );
+        q = value * ( 1 - saturation * f );
+        t = value * ( 1 - saturation * ( 1 - f ) );
+        switch(i) {
+            case 0:
+                red = value;
+                green = t;
+                blue = p;
+                break;
+            case 1:
+                red = q;
+                green = value;
+                blue = p;
+                break;
+            case 2:
+                red = p;
+                green = value;
+                blue = t;
+                break;
+            case 3:
+                red = p;
+                green = q;
+                blue = value;
+                break;
+            case 4:
+                red = t;
+                green = p;
+                blue = value;
+                break;
+            default:        // case 5:
+                red = value;
+                green = p;
+                blue = q;
+                break;
+        }
+        return [red,green,blue];
+    }
 
 //descargar img
 var button = document.getElementById('descargar');
