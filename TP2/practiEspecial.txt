@@ -1,0 +1,12 @@
+podemos tener un canvas o varios.
+tenr varias figuras dentro de un vector.
+cuando hago un click en el canvas, y tengo que ir alvector y preguntar en cada una de las instacias si le pegue,
+o no le pegue.
+tengo que preguntarle a todas las figuras poruqe es sobre el canvas
+en cada figura, tener una funcion para ver si le pego o no.
+y si es que si, que se cambie de color la figura.
+
+para draggear
+referencia que un objeto.
+hacer cuentas en dnd esta parado el mouse y dnd e staba antes.
+redibujar el canvas para que no se me solapen  las figuras.

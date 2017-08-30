@@ -1,3 +1,10 @@
+// Ejercicio 2
+// 2) Genereunconjuntodefigurasbidimensionales.
+// a. Dibujar en distintas posiciones al azar
+// b. Aplicarles distintas formas
+// c. Dibujar con distinto color
+// d. Llenar con distintos patrones
+
 var ctx = document.getElementById("canvas").getContext("2d");
 
 //Clase Circulo
@@ -42,23 +49,28 @@ function Rectangulo() {
   this.color;
 }
 
-function Rectangulo(x,y,r,c) {
+function Rectangulo(x,y,c) {
   this.posX = x;
   this.posY = y;
-  this.radio = r;
   this.color = c;
 }
 
 Rectangulo.prototype.dibujarRect = function () {
   ctx.beginPath();
   ctx.fillStyle = this.color;
-  ctx.fillRect(this.posX,this.posY,this.radio,100);
+  ctx.fillRect(this.posX,this.posY,200,100);
   ctx.closePath();
 };
 
-var rect1 = new Rectangulo(40,10,100,'red');
-var rect2 = new Rectangulo(300,60,100,'blue');
-var rect3 = new Rectangulo(600,30,100,'green');
+Rectangulo.prototype.putImage = function () {
+  ctx.rect(100, 100, 200, 100);
+  ctx.fillStyle = img;
+  ctx.fill();
+};
+
+var rect1 = new Rectangulo(40,10,'red');
+var rect2 = new Rectangulo(300,60,'blue');
+var rect3 = new Rectangulo(600,30,'green');
 
 rect1.dibujarRect();
 rect2.dibujarRect();
@@ -80,17 +92,31 @@ function Triangulo(x,y,c) {
 Triangulo.prototype.dibujarTriangulo = function () {
   ctx.beginPath();
   ctx.moveTo(this.posX,this.posY);
-  ctx.lineTo(25,25);
-  ctx.lineTo(25,105);
-  ctx.fill();
+  ctx.lineTo(200,600);
+  ctx.lineTo(600,600);
+  ctx.fillStyle = this.color;
   ctx.closePath();
 
 };
 
-var t1 = new Triangulo(40,10,'red');
-var t2 = new Triangulo(30,60,'blue');
-var t3 = new Triangulo(600,30,'green');
-
+var t1 = new Triangulo(400,400,'blue');
 t1.dibujarTriangulo();
-t2.dibujarTriangulo();
-t3.dibujarTriangulo();
+
+// Gradiente
+var gradient = ctx.createLinearGradient(10, 90, 200, 90);
+gradient.addColorStop(0, 'black');
+gradient.addColorStop(0.6, 'red');
+gradient.addColorStop(1, 'white');
+ctx.fillStyle = gradient;
+ctx.fillRect(50, 300, 200, 250);
+
+//Imagen
+var image = new Image();
+image.src = "foco";
+image.onload = function() {
+img = ctx.createPattern(image,"repeat");
+rect1.putImage(image);
+// ctx.rect(0, 0, 150, 100);
+// ctx.fillStyle = image;
+// ctx.fill();
+}
