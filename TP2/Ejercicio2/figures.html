@@ -19,23 +19,16 @@
 	var ctx = document.getElementById("canvas").getContext("2d");
 
 	var circle1 = new Circle(600,400,100,'#141444');
-
 	var circle2 = new Circle(250,250,100,'#141444');
 	var circle3 = new Circle(500,250,70,'#000000');
 	var circle4 = new Circle(100,250,60,'#14ff44');
 
-	circle2.dibujar();
-	circle3.dibujar();
-	circle4.dibujar();
+	circle1.dibujarCirculo();
+	circle2.dibujarCirculo();
+	circle3.dibujarCirculo();
+	circle4.dibujarCirculo();
 
-	circle1.dibujarImagen(ctx,"../ap.png","repeat");
 
-// canvas.onclick = function(e) {
-//
-// 	var circle1 = new Circle(e.clientX,e.clientY,200,'#141444');
-//
-// 	circle1.dibujarImagen(ctx,"../ap.png","repeat");
-// }
 
 	var rect1 = new Rectangulo(40,10,'red');
 	var rect2 = new Rectangulo(300,60,'blue');

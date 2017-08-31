@@ -1,3 +1,11 @@
+// Ejercicio 2
+// 2) Genereunconjuntodefigurasbidimensionales.
+// a. Dibujar en distintas posiciones al azar
+// b. Aplicarles distintas formas
+// c. Dibujar con distinto color
+// d. Llenar con distintos patrones
+
+
 //Clase Circulo
 function Circle() {
   this.posX;
@@ -6,10 +14,11 @@ function Circle() {
   this.color;
 }
 
-function Circle(paramPosX,paramPosY,paramRadio) {
+function Circle(paramPosX,paramPosY,paramRadio,paramColor) {
   this.posX = paramPosX;
   this.posY = paramPosY;
   this.radio = paramRadio;
+  this.color = paramColor;
 }
 
 Circle.prototype.dibujarCirculo = function () {
@@ -20,19 +29,5 @@ Circle.prototype.dibujarCirculo = function () {
   ctx.strokeStyle = 'black';
   ctx.stroke();
   ctx.closePath();
-};
 
-//Imagen
-
-Circle.prototype.dibujarImagen = function (ctx,imgSrc,repeat) {
-  ctx.beginPath();
-  var image = new Image();
-  image.src = imgSrc;
-  image.onload = function() {
-  var p = ctx.createPattern(image,repeat);
-  ctx.fillStyle = p;
-  };
-  ctx.arc(this.posX,this.posY,this.radio,0,2*Math.PI);
-  ctx.fill();
-  ctx.closePath();
 };

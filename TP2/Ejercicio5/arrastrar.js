@@ -7,7 +7,6 @@ var X = canvas.width / 2;
 var Y = canvas.height / 2;
 
 var circle1 = new Circle(400,250,100);
-circle1.dibujarCirculo();
 
 function oMousePos(canvas, evt) {
   var rect = canvas.getBoundingClientRect();
