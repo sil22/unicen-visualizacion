@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Template</title>
+</head>
+<body>
+
+	<canvas id="canvas" width="900" height="600" style="border:#000 solid 1px;" />
+
+
+
+</body>
+<script type="text/javascript" src="Circle.js"></script>
+<script type="text/javascript" src="Rectangulo.js"></script>
+<script type="text/javascript" src="Triangulo.js"></script>
+
+	<script>
+	var ctx = document.getElementById("canvas").getContext("2d");
+
+	var circle1 = new Circle(600,400,100,'#141444');
+
+	var circle2 = new Circle(250,250,100,'#141444');
+	var circle3 = new Circle(500,250,70,'#000000');
+	var circle4 = new Circle(100,250,60,'#14ff44');
+
+	circle2.dibujar();
+	circle3.dibujar();
+	circle4.dibujar();
+
+	circle1.dibujarImagen(ctx,"../ap.png","repeat");
+
+// canvas.onclick = function(e) {
+//
+// 	var circle1 = new Circle(e.clientX,e.clientY,200,'#141444');
+//
+// 	circle1.dibujarImagen(ctx,"../ap.png","repeat");
+// }
+
+	var rect1 = new Rectangulo(40,10,'red');
+	var rect2 = new Rectangulo(300,60,'blue');
+	var rect3 = new Rectangulo(600,30,'green');
+
+	rect1.dibujarRect();
+	rect2.dibujarRect();
+	rect3.dibujarRect();
+
+
+	var t1 = new Triangulo(400,400,'orange');
+	t1.dibujarTriangulo();
+
+	</script>
+
+</html>

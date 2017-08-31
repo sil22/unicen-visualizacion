@@ -1,12 +1,9 @@
 
-var ctx = document.getElementById("canvas").getContext("2d");
-var canvas = document.getElementById("canvas");
-
 //funcion que detecta el mousedown y llama ala funcion detectarPunto del obj circle
-canvas.onmousedown = function(event) {
-  console.log(event);
-  circle1.detectarPunto(event.clientX,event.clientY)
- };
+// canvas.onmousedown = function(event) {
+//   console.log(event);
+//   circle1.detectarPunto(event.clientX,event.clientY)
+//  };
 
 //Clase Circulo
 function Circle() {
@@ -22,7 +19,7 @@ function Circle(paramPosX,paramPosY,paramRadio) {
   this.radio = paramRadio;
 }
 
-Circle.prototype.dibujar = function () {
+Circle.prototype.dibujarCirculo = function () {
   ctx.beginPath();
   ctx.arc(this.posX,this.posY,this.radio,0,Math.PI * 2);
   ctx.lineWidth = 5;
@@ -46,6 +43,3 @@ Circle.prototype.detectarPunto = function (clientX,clientY) {
    alert('adentro');
  }
 };
-
-var circle1 = new Circle(400,250,100);
-circle1.dibujar();
