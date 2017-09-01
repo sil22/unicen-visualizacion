@@ -7,19 +7,20 @@
   <body>
 
 		<canvas id="canvas" width="900" height="600" style="border:#000 solid 1px;" />
+
 </body>
+<script type="text/javascript" src="Circle.js"></script>
+
 <script>
 var ctx = document.getElementById("canvas").getContext("2d");
 
+	var circle1 = new Circle(100,100,200,'#141444');
+	
+	canvas.onclick = function(e) {
 
-canvas.onclick = function(e) {
-
-	var circle1 = new Circle(e.clientX,e.clientY,200,'#141444');
-
-	circle1.dibujarImagen(ctx,"../ap.png","repeat");
+	circle1.dibujarImagen(ctx,"../ap.png","no-repeat");
 }
 
 </script>
-		<script type="text/javascript" src="Circle.js"></script>
 
 </html>

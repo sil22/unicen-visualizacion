@@ -1,43 +1,28 @@
 
-var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d");
-var arrastrar = false;
-var delta = new Object();
-var X = canvas.width / 2;
-var Y = canvas.height / 2;
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	width = canvas.width,
+	height = canvas.height,
 
-var circle1 = new Circle(400,250,100);
+	 circle1 = new Circle(100,200,40,'gray');
 
-function oMousePos(canvas, evt) {
-  var rect = canvas.getBoundingClientRect();
-  return { // devuelve un objeto
-    x: Math.round(evt.clientX - rect.left),
-    y: Math.round(evt.clientY - rect.top)
+	canvas.onmousedown = function(event) {
+  //  console.log(event);
+	circle1.setPosX(event.clientX);
+ 	circle1.setPosY(event.clientY);
+ 	circle1.setRadio(10);
+	circle1.dibujarCirculo();
+
+	canvas.onmousemove = function(event) {
+  // 	console.log('mousemove');
+  // 	console.log('client: (' + event.clientX + ', ' + event.clientY + ')');
+ 	circle1.setPosX(event.clientX);
+ 	circle1.setPosY(event.clientY);
+ 	circle1.setRadio(10);
+ 	ctx.clearRect(0,0,canvas.width, canvas.height);
+ 	circle1.dibujarCirculo();
   };
 }
-    canvas.addEventListener("mousedown", function(evt) {
-      var mousePos = oMousePos(canvas, evt);
-      circle1.dibujarCirculo();
-      if (ctx.isPointInPath(mousePos.x, mousePos.y)) {
-        arrastrar = true;
-        delta.x = X - mousePos.x;
-        delta.y = Y - mousePos.y;
+	canvas.onmouseup = function(event) {
 
-      }
-    }, false);
-
-    canvas.addEventListener("mousemove", function(evt) {
-      var mousePos = oMousePos(canvas, evt);
-      console.log(arrastrar);
-      if (arrastrar) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        X = mousePos.x + delta.x,
-        Y = mousePos.y + delta.y
-
-        circle1.dibujarCirculo();
-      }
-    }, false);
-
-    canvas.addEventListener("mouseup", function(evt) {
-      arrastrar = false;
-    }, false);
+ }
