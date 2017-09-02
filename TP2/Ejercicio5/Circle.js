@@ -46,6 +46,7 @@ Circle.prototype.detectarPunto = function (clientX,clientY) {
  var b = Math.pow((clientY-this.posY),2);
  var c = a + b;
  var result = Math.sqrt(c);
+ return this.radio > result;
 
  // if (result > this.radio){
  //   console.log('afuera del circulo');
