@@ -7,6 +7,8 @@ class Circle {
     this.radio = paramRadio;
     this.color = paramColor;
     this.figura = 2;
+    this.x = 0;
+    this.y = 0;
   }
 }
 Circle.prototype.draw = function () {
@@ -34,6 +36,6 @@ Circle.prototype.detectarPunto = function (clientX,clientY) {
   return this.radio > result;
 }
 
-Circle.prototype.equals = function(figura) {
-  return figura.tipo = this.tipo;
+Circle.prototype.isTheSame = function(tipo) {
+  return this.figura = this.tipo;
 };
