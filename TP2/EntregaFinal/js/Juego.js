@@ -1,52 +1,57 @@
 
-var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d");
-var figures = [];
-var figureContour = [];
-var circle = new Circle(100,200,50,'red');
-var circleContour = new Circle(800,500,50);
-var square = new Square(250,200,100,'blue');
-var squareContour = new Square(550,500,100);
-var rect = new Rectangle(100,350,200,100,'green');
-var rectContour = new Rectangle(600,300,200,100);
-var figuresSelected = [];
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
+let figures = [];
+let figuresContour = [];
+let figureSelected = null;
+let inserts = [];
 
-figures.push(circle);
-figureContour.push(circleContour,squareContour,rectContour);
-console.log(figures);
-for (var i = 0; i < figures.length; i++) {
+let circle = new Circle(100,200,50,'red',1);
+let circleContour = new Circle(850,450,50,'',1);
+let square = new Square(250,200,100,'blue',2);
+let squareContour = new Square(550,400,100,'',2);
+let rect = new Rectangle(100,350,200,100,'green',3);
+let rectContour = new Rectangle(650,250,200,100,'',3);
+
+figures.push(circle,square,rect);
+figuresContour.push(circleContour,squareContour,rectContour);
+
+for (let i = 0; i < figures.length; i++) {
 	figures[i].draw();
-	figureContour[i].drawContour();
-	figuresSelected[i] = false;
+	figuresContour[i].drawContour();
 }
 
 canvas.onmousedown = function(event) {
-	for (var i = 0; i < figures.length; i++) {
-		if(figures[i].detectarPunto(event.clientX,event.clientY)){
-			console.log(figures[i]);
-			console.log('entro ');
-			figuresSelected[i] = true;
-			figures[i].x = event.clientX;
-			figures[i].y = event.clientY;
+	for (let i = 0; i < figures.length; i++) {
+		if(figures[i].detectPoint(event)) {
+			figureSelected = figures[i];
+			figures[i].x = event.clientX - figures[i].posX;
+			figures[i].y = event.clientY - figures[i].posY;
 		}
 	}
 
 	canvas.onmousemove = function(event) {
-		for (var i = 0; i < figuresSelected.length; i++) {
-			if(figuresSelected[i]){
-				figures[i].posX = event.clientX;
-				figures[i].posY = event.clientY;
-				ctx.clearRect(0,0,canvas.width, canvas.height);
-				for (var i = 0; i < figures.length; i++) {
-					figures[i].draw();
-				}
+		if(figureSelected != null){
+			figureSelected.posX = event.clientX - figureSelected.x;
+			figureSelected.posY = event.clientY - figureSelected.y;
+			ctx.clearRect(0,0,canvas.width, canvas.height);
+			for (let i = 0; i < figures.length; i++) {
+				figures[i].draw();
+				figuresContour[i].drawContour();
 			}
 		}
-	};
-}
-canvas.onmouseup = function(event) {
-	canvas.onmousemove = null;
-	for (var i = 0; i < figures.length; i++) {
-		figuresSelected[i] = false;
+
+		canvas.onmouseup = function(event) {
+			canvas.onmousemove = null;
+			for (let i = 0; i < figuresContour.length; i++) {
+				if(figuresContour[i].detectPoint(event) && figuresContour[i].isTheSame(figureSelected.figura) ){
+					inserts.push(figureSelected);
+					if (inserts.length === figures.length) {
+						alert('ganaste!!!');
+					}
+				}
+			}
+			figureSelected = null;
+		}
 	}
 }

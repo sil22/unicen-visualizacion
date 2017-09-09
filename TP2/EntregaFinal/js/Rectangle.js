@@ -1,38 +1,44 @@
 //Clase Rectangulo
 class Rectangle {
-  constructor(x,y,w,h,c) {
-    this.posX = x;
-    this.posY = y;
+  constructor(px,py,w,h,c,f) {
+    this.posX = px;
+    this.posY = py;
     this.color = c;
     this.width = w;
     this.height = h;
-    this.figura = 1;
+    this.figura = f;
     this.x = 0;
     this.y = 0;
   }
-}
 
-Rectangle.prototype.draw = function () {
-  ctx.beginPath();
-  ctx.fillStyle = this.color;
-  ctx.fillRect(this.posX,this.posY,this.width,this.height);
-  ctx.closePath();
-};
+  draw() {
+    ctx.beginPath();
+    ctx.fillStyle = this.color;
+    ctx.shadowBlur = 40;
+    ctx.shadowColor = 'black';
+    ctx.lineWidth = 5;
+    ctx.stroke();
+    ctx.fillRect(this.posX,this.posY,this.width,this.height);
+    ctx.closePath();
+  }
 
-Rectangle.prototype.drawContour = function () {
-  ctx.rect(this.posX,this.posY,this.width,this.height);
-  ctx.stroke();
-};
+  drawContour() {
+    ctx.beginPath();
+    ctx.rect(this.posX,this.posY,this.width,this.height);
+    ctx.stroke();
+    ctx.closePath();
+  }
 
-Rectangle.prototype.isTheSame = function(tipo) {
-  return this.figura = this.tipo;
-};
+  isTheSame(tipo) {
+    return tipo === this.figura;
+  }
 
-Rectangle.prototype.detectarPunto = function (clientX,clientY) {
-   var r = canvas.getBoundingClientRect();
-   var mx =   clientX - rect.left;
-   var my =   clientY - rect.top;
-   return  (this.posX < mx) && (this.width + this.posX > mx) && (this.posY < my)
-   && (this.height + this.posY > my);
+  detectPoint(event) {
+    var r = canvas.getBoundingClientRect();
+    var mx = event.clientX - r.left;
+    var my = event.clientY - r.top;
+
+    return  (this.posX < mx) && (this.width + this.posX > mx) && (this.posY < my) && (this.height + this.posY > my);
+  }
 
 }
