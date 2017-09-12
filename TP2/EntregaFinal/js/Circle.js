@@ -11,14 +11,14 @@ class Circle {
     this.y = 0;
   }
 
-  draw(){
+  draw() {
+
     ctx.fillStyle = this.color;
     ctx.beginPath();
     ctx.shadowBlur = 40;
     ctx.shadowColor = 'black';
     ctx.arc(this.posX,this.posY,this.radio,0,Math.PI * 2);
     ctx.fill();
-    ctx.stroke();
     ctx.closePath();
   }
 
@@ -46,34 +46,3 @@ class Circle {
   }
 
 }
-//
-//
-// Circle.prototype.draw = function () {
-//   ctx.fillStyle = this.color;
-//   ctx.beginPath();
-//   ctx.arc(this.posX,this.posY,this.radio,0,Math.PI * 2);
-//   ctx.fill();
-//   ctx.closePath();
-// };
-//
-// Circle.prototype.drawContour = function () {
-//   ctx.beginPath();
-//   ctx.arc(this.posX,this.posY,this.radio,0,Math.PI * 2);
-//   ctx.lineWidth = 5;
-//   ctx.strokeStyle = 'black';
-//   ctx.stroke();
-//   ctx.closePath();
-// };
-//
-// Circle.prototype.detectarPunto = function (clientX,clientY) {
-//   //formula p detectar la ubicacion del mouse dentro del circulo
-//   var a = Math.pow((clientX-this.posX),2);
-//   var b = Math.pow((clientY-this.posY),2);
-//   var result = Math.sqrt(a+b);
-//   console.log(result);
-//   return this.radio > result;
-// }
-//
-// Circle.prototype.isTheSame = function(tipo) {
-//   return this.figura = this.tipo;
-// };

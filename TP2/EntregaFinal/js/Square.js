@@ -16,7 +16,6 @@ class Square {
     ctx.shadowBlur = 40;
     ctx.shadowColor = 'black';
     ctx.fillRect(this.posX,this.posY,this.lado,this.lado);
-    ctx.stroke();
     ctx.closePath();
   }
 

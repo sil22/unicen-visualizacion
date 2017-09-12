@@ -2,16 +2,57 @@ body{
   background-color: rgba(228, 207, 14, 0.33);
 }
 #canvas {
-  margin-left: 100px;
-  background-image: url('../images/girafa.png');
+  background-image: url('../images/jirafa.png');
+  box-shadow: 1px 1px 5px 5px rgba(49, 217, 34, 0.68); 
+}
+.instrucciones, .title{
+  margin: 10px 0px 10px 0px;
+  width: 250px;
 
 }
-
-.title {
-  margin-top: 10px;
-  padding-left: 100px;
+.elegi {
+  padding: 40px 0px 40px 10px;
+  text-align: center;
+}
+.cronometro{
+  padding-left: 90px;
+  font-style: italic;
+  font-weight: bold;
+}
+.botonera{
+  margin-left: 180px;
+}
+.btn-group-vertical{
+  width: 250px;
+}
+.btn-primary{
+  background-color: #ee410b !important;
+  border-color: #ee410b;
+}
+.btn-primary:hover{
+  background-color: #e47e1f !important;
+  border-color: #e47e1f;
+}
+.btn-primary:focus{
+  box-shadow: 0 0 0 3px rgba(255, 130, 0, 0.5);
+}
+.refresh {
+  width: 250px;
+  margin-top: 50px;
+}
+.n1{
+  box-shadow: 0 0 0 3px rgba(255, 130, 0, 0.5);
+  background-color: #e47e1f !important;
+  border-color: #e47e1f;
 }
 
-button{
-  margin-left: 100px;
+.num{
+  background-color: black;
+  color: white;
+}
+
+.reloj {
+  width: 250px;
+  margin-top: 30px;
+  background-color:  #e47e1f;
 }
