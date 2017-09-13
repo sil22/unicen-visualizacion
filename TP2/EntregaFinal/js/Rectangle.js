@@ -1,6 +1,6 @@
 //Clase Rectangulo
 class Rectangle {
-  constructor(px,py,w,h,c,f) {
+  constructor(px,py,w,h,c,f,image) {
     this.posX = px;
     this.posY = py;
     this.color = c;
@@ -9,16 +9,18 @@ class Rectangle {
     this.figura = f;
     this.x = 0;
     this.y = 0;
+    this.img = image;
   }
 
   draw() {
     ctx.beginPath();
     ctx.fillStyle = this.color;
+    ctx.drawImage(this.img,this.posX,this.posY,this.width,this.height);
+    ctx.fillRect(this.posX,this.posY,this.width,this.height);
     ctx.shadowBlur = 40;
     ctx.shadowColor = 'black';
     ctx.lineWidth = 5;
     ctx.stroke();
-    ctx.fillRect(this.posX,this.posY,this.width,this.height);
     ctx.closePath();
   }
 

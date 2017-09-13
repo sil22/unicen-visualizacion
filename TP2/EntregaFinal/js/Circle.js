@@ -1,7 +1,7 @@
 
 //Clase Circulo
 class Circle {
-  constructor(paramPosX,paramPosY,paramRadio,paramColor,f) {
+  constructor(paramPosX,paramPosY,paramRadio,paramColor,f,image) {
     this.posX = paramPosX;
     this.posY = paramPosY;
     this.radio = paramRadio;
@@ -9,18 +9,20 @@ class Circle {
     this.figura = f;
     this.x = 0;
     this.y = 0;
+    this.img = image;
   }
 
   draw() {
-
-    ctx.fillStyle = this.color;
     ctx.beginPath();
+    ctx.fillStyle = this.color;
+    ctx.drawImage(this.img,this.posX - this.radio, this.posY - this.radio,this.radio * 2 , this.radio * 2);
+    ctx.arc(this.posX,this.posY,this.radio,0,Math.PI * 2);
     ctx.shadowBlur = 40;
     ctx.shadowColor = 'black';
-    ctx.arc(this.posX,this.posY,this.radio,0,Math.PI * 2);
     ctx.fill();
     ctx.closePath();
   }
+
 
   drawContour(){
     ctx.beginPath();
@@ -44,5 +46,13 @@ class Circle {
   isTheSame(tipo){
     return tipo === this.figura;
   }
+
+  // putImage(imgSrc,repeat) {
+  //   var image = new Image();
+  //   image.src = imgSrc;
+  //   image.onload = function() {
+  //     ctx.drawImage(this,this.posX,this.posY);
+  //   };
+  // }
 
 }
