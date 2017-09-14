@@ -6,6 +6,7 @@ $("document").ready(function() {
 })
 
 
+
 //imagenes de figuras
 let image1 = new Image();
 image1.src = "images/zorro.png";
@@ -33,6 +34,8 @@ let inserts = [];
 let color = 'white';
 let cronometro;
 
+
+
 let circle1 = new Circle(100,200,50,color,1,image1); //nivel 1
 let circle2 = new Circle(480,80,50,color,1,image2); // nivel 2
 let circle3 = new Circle(50,450,50,color,1,image3); // nivel 3
@@ -57,8 +60,8 @@ let rectContour1 = new Rectangle(600,200,200,100,'',3);
 let rectContour2 = new Rectangle(900,350,200,100,'',3);
 let rectContour3 = new Rectangle(650,470,200,100,'',3);
 
-
 function comenzarJuego() {
+
 	$('.wait').hide();
 	figures.push(circle1,square1,rect1);
 	figuresContour.push(circleContour1,squareContour1,rectContour1);
@@ -86,19 +89,19 @@ function comenzarJuego() {
 				for (let i = 0; i < figuresContour.length; i++) {
 					if(figuresContour[i].detectPoint(event) && figuresContour[i].isTheSame(figureSelected.figura) ){
 						inserts.push(figureSelected);
+						console.log(inserts.length);
 						if (inserts.length === figures.length) {
 							detenerReloj();
-							$('.wait').hide();
-							$('#modal' ).show();
-
-							// ctx.clearRect(0,0,canvas.width, canvas.height);
-							// for (let i = 0; i < figures.length; i++) {
-							// 	figuresContour[i].drawContour(ctx);
-							//
-							// 	figures[i].posX = event.clientX - figures[i].posX;
-							// 	figures[i].posY = event.clientY - figures[i].posY;
-							// 	figures[i].draw(ctx);
-							// }
+							$('#modalWin').modal('show');
+							refresh();
+							ctx.clearRect(0,0,canvas.width, canvas.height);
+							for (let i = 0; i < figures.length; i++) {
+								figures[i].posX = event.clientX - figures[i].posX + 60;
+								figures[i].posY = event.clientY - figures[i].posY + 60;
+								console.log(figures[i].posX,figures[i].posY);
+								figuresContour[i].drawContour(ctx);
+								figures[i].draw(ctx);
+							}
 						}
 					}
 				}
@@ -129,7 +132,7 @@ function cargarReloj() {
 			}
 			s.innerHTML = contador_s;
 			contador_s++;
-			
+
 		},1000);
 
 	}
@@ -147,6 +150,7 @@ function cargarReloj() {
 	function nivel2() {
 		detenerReloj();
 		cargarReloj();
+		$('.n1').tooltip('show');
 		figures.push(circle1,square1,rect1,circle2,square2,rect2);
 		figuresContour.push(circleContour1,squareContour1,rectContour1,circleContour2,squareContour2,rectContour2);
 		dibujarFiguras();
@@ -158,6 +162,7 @@ function cargarReloj() {
 	function nivel3() {
 		detenerReloj();
 		cargarReloj();
+		$('.n1').tooltip('show');
 		figures.push(circle1,square1,rect1,circle2,square2,rect2,circle3,square3,rect3);
 		figuresContour.push(circleContour1,squareContour1,rectContour1,circleContour2,squareContour2,rectContour2,circleContour3,squareContour3,rectContour3);
 		dibujarFiguras();
@@ -166,10 +171,12 @@ function cargarReloj() {
 	}
 
 	function refresh() {
+		$('.n1').tooltip('hide');
 		$('.n1').prop("disabled",false);
 		$('.n2').prop("disabled",false);
 		$('.n3').prop("disabled",false);
 		figures.length = 0;
 		figuresContour.length = 0;
+		inserts.length = 0;
 		comenzarJuego();
 	}
