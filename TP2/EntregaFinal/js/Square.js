@@ -11,17 +11,18 @@ class Square {
     this.img = image;
   }
 
-  draw() {
+  draw(ctx) {
     ctx.beginPath();
     ctx.fillStyle = this.color;
+    ctx.fillRect(this.posX,this.posY,this.lado,this.lado);
     ctx.drawImage(this.img,this.posX,this.posY,this.lado,this.lado);
     ctx.shadowBlur = 40;
     ctx.shadowColor = 'black';
-    ctx.fillRect(this.posX,this.posY,this.lado,this.lado);
     ctx.closePath();
+    this.drawContour(ctx);
   }
 
-  drawContour() {
+  drawContour(ctx) {
     ctx.rect(this.posX,this.posY,this.lado,this.lado);
     ctx.stroke();
   }

@@ -12,19 +12,20 @@ class Rectangle {
     this.img = image;
   }
 
-  draw() {
+  draw(ctx) {
     ctx.beginPath();
     ctx.fillStyle = this.color;
-    ctx.drawImage(this.img,this.posX,this.posY,this.width,this.height);
     ctx.fillRect(this.posX,this.posY,this.width,this.height);
+    ctx.drawImage(this.img,this.posX,this.posY,this.width,this.height);
     ctx.shadowBlur = 40;
     ctx.shadowColor = 'black';
     ctx.lineWidth = 5;
     ctx.stroke();
     ctx.closePath();
+    this.drawContour(ctx);
   }
 
-  drawContour() {
+  drawContour(ctx) {
     ctx.beginPath();
     ctx.rect(this.posX,this.posY,this.width,this.height);
     ctx.stroke();

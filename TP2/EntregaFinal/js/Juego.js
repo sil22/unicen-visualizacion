@@ -2,27 +2,35 @@ $("document").ready(function() {
 	$('#myModal').on('show.bs.modal', function (e) {
 		if (!data) return e.preventDefault() // stops modal from being shown
 	})
+	$('.wait').show();
 })
 
-let canvas = document.getElementById("canvas");
-let ctx = canvas.getContext("2d");
 
 //imagenes de figuras
 let image1 = new Image();
 image1.src = "images/zorro.png";
+image1.onload = function () {
+}
 let image2 = new Image();
 image2.src = "images/cerdito.png";
+image2.onload = function () {
+}
 let image3 = new Image();
 image3.src = "images/cocodrilo.png";
-// let image4 = new Image();
-// image4.src = "images/pinguin.png";
+image3.onload = function () {
+}
 
+//espera un segundo para que terminen de cargar las img
+setTimeout(comenzarJuego, 1000);
+
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
 
 let figures = [];
 let figuresContour = [];
 let figureSelected = null;
 let inserts = [];
-let color = 'rgba(49, 217, 34, 0.78)';
+let color = 'white';
 let cronometro;
 
 let circle1 = new Circle(100,200,50,color,1,image1); //nivel 1
@@ -44,62 +52,58 @@ let squareContour3 = new Square(950,480,100,'',2);
 let rect1 = new Rectangle(150,350,200,100,color,3,image2);
 let rect2= new Rectangle(200,50,200,100,color,3,image3);
 let rect3 = new Rectangle(50,530,200,100,color,3,image1);
-	
+
 let rectContour1 = new Rectangle(600,200,200,100,'',3);
 let rectContour2 = new Rectangle(900,350,200,100,'',3);
 let rectContour3 = new Rectangle(650,470,200,100,'',3);
 
+
 function comenzarJuego() {
+	$('.wait').hide();
 	figures.push(circle1,square1,rect1);
 	figuresContour.push(circleContour1,squareContour1,rectContour1);
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	dibujarFiguras();
+	cargarReloj();
 
-	for (let i = 0; i < figures.length; i++) {
-		figures[i].draw();
-		figuresContour[i].drawContour();
+	canvas.onmousedown = function(event) {
 
-	}
-}
-comenzarJuego();
-
-canvas.onmousedown = function(event) {
-	for (let i = 0; i < figures.length; i++) {
-		if(figures[i].detectPoint(event)) {
-			figureSelected = figures[i];
-			figures[i].x = event.clientX - figures[i].posX;
-			figures[i].y = event.clientY - figures[i].posY;
-
-		}
-	}
-	canvas.onmousemove = function(event) {
-		if(figureSelected != null){
-			figureSelected.posX = event.clientX - figureSelected.x;
-			figureSelected.posY = event.clientY - figureSelected.y;
-			ctx.clearRect(0,0,canvas.width, canvas.height);
-			for (let i = 0; i < figures.length; i++) {
-				figures[i].draw();
-				figuresContour[i].drawContour();
+		for (let i = 0; i < figures.length; i++) {
+			if(figures[i].detectPoint(event)) {
+				figureSelected = figures[i];
+				figures[i].x = event.clientX - figures[i].posX;
+				figures[i].y = event.clientY - figures[i].posY;
 			}
 		}
-		canvas.onmouseup = function(event) {
-			canvas.onmousemove = null;
-			for (let i = 0; i < figuresContour.length; i++) {
-				if(figuresContour[i].detectPoint(event) && figuresContour[i].isTheSame(figureSelected.figura) ){
-					inserts.push(figureSelected);
-					if (inserts.length === figures.length) {
-						alert('ganaste!!!' );
-						detenerReloj();
-						ctx.clearRect(0,0,canvas.width, canvas.height);
-						for (let i = 0; i < figures.length; i++) {
-							figures[i].posX = figures[i].x;
-							figures[i].posY = figures[i].y;
-							figures[i].draw();
-							figuresContour[i].drawContour();
+		canvas.onmousemove = function(event) {
+			if(figureSelected != null){
+				figureSelected.posX = event.clientX - figureSelected.x;
+				figureSelected.posY = event.clientY - figureSelected.y;
+				dibujarFiguras();
+
+			}
+			canvas.onmouseup = function(event) {
+				canvas.onmousemove = null;
+				for (let i = 0; i < figuresContour.length; i++) {
+					if(figuresContour[i].detectPoint(event) && figuresContour[i].isTheSame(figureSelected.figura) ){
+						inserts.push(figureSelected);
+						if (inserts.length === figures.length) {
+							detenerReloj();
+							$('.wait').hide();
+							$('#modal' ).show();
+
+							// ctx.clearRect(0,0,canvas.width, canvas.height);
+							// for (let i = 0; i < figures.length; i++) {
+							// 	figuresContour[i].drawContour(ctx);
+							//
+							// 	figures[i].posX = event.clientX - figures[i].posX;
+							// 	figures[i].posY = event.clientY - figures[i].posY;
+							// 	figures[i].draw(ctx);
+							// }
 						}
 					}
 				}
+				figureSelected = null;
 			}
-			figureSelected = null;
 		}
 	}
 }
@@ -125,38 +129,47 @@ function cargarReloj() {
 			}
 			s.innerHTML = contador_s;
 			contador_s++;
+			
+		},1000);
+
+	}
+
+	function dibujarFiguras() {
+		ctx.clearRect(0,0,canvas.width, canvas.height);
+		for (let i = 0; i < figures.length; i++) {
+			figuresContour[i].drawContour(ctx);
 		}
-		,1000);
+		for (var i = 0; i < figuresContour.length; i++) {
+			figures[i].draw(ctx);
+		}
 	}
 
 	function nivel2() {
+		detenerReloj();
+		cargarReloj();
 		figures.push(circle1,square1,rect1,circle2,square2,rect2);
 		figuresContour.push(circleContour1,squareContour1,rectContour1,circleContour2,squareContour2,rectContour2);
-		ctx.clearRect(0,0,canvas.width, canvas.height);
-		for (let i = 0; i < figures.length; i++) {
-			figures[i].draw();
-			figuresContour[i].drawContour();
-		}
+		dibujarFiguras();
+		$('.n1').prop("disabled",true);
+		$('.n3').prop("disabled",true);
+
 	}
 
 	function nivel3() {
+		detenerReloj();
+		cargarReloj();
 		figures.push(circle1,square1,rect1,circle2,square2,rect2,circle3,square3,rect3);
 		figuresContour.push(circleContour1,squareContour1,rectContour1,circleContour2,squareContour2,rectContour2,circleContour3,squareContour3,rectContour3);
-		ctx.clearRect(0,0,canvas.width, canvas.height);
-		for (let i = 0; i < figures.length; i++) {
-			figures[i].draw();
-			figuresContour[i].drawContour();
-		}
+		dibujarFiguras();
+		$('.n1').prop("disabled",true);
+		$('.n2').prop("disabled",true);
 	}
 
 	function refresh() {
+		$('.n1').prop("disabled",false);
+		$('.n2').prop("disabled",false);
+		$('.n3').prop("disabled",false);
 		figures.length = 0;
 		figuresContour.length = 0;
 		comenzarJuego();
 	}
-
-	// let image1 = new Image();
-	// let image2 = new Image();
-	// image1.src = "images/zorro.png";
-	// var img1 = ctx.createPattern(image1,"no-repeat");
-	// image2.src = "images/cerdito.png";

@@ -12,23 +12,26 @@ class Circle {
     this.img = image;
   }
 
-  draw() {
+  draw(ctx) {
     ctx.beginPath();
     ctx.fillStyle = this.color;
-    ctx.drawImage(this.img,this.posX - this.radio, this.posY - this.radio,this.radio * 2 , this.radio * 2);
     ctx.arc(this.posX,this.posY,this.radio,0,Math.PI * 2);
     ctx.shadowBlur = 40;
     ctx.shadowColor = 'black';
     ctx.fill();
     ctx.closePath();
+    ctx.drawImage(this.img,this.posX - this.radio, this.posY - this.radio,this.radio * 2 , this.radio * 2);
+    this.drawContour(ctx);
   }
 
 
-  drawContour(){
+  drawContour(ctx){
     ctx.beginPath();
     ctx.arc(this.posX,this.posY,this.radio,0,Math.PI * 2);
     ctx.lineWidth = 5;
     ctx.strokeStyle = 'black';
+    ctx.shadowBlur = 40;
+    ctx.shadowColor = 'black';
     ctx.stroke();
     ctx.closePath();
   }
@@ -46,13 +49,5 @@ class Circle {
   isTheSame(tipo){
     return tipo === this.figura;
   }
-
-  // putImage(imgSrc,repeat) {
-  //   var image = new Image();
-  //   image.src = imgSrc;
-  //   image.onload = function() {
-  //     ctx.drawImage(this,this.posX,this.posY);
-  //   };
-  // }
 
 }

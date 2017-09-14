@@ -3,7 +3,7 @@ body{
 }
 #canvas {
   background-image: url('../images/jirafa.png');
-  box-shadow: 1px 1px 5px 5px rgba(49, 217, 34, 0.68); 
+  box-shadow: 1px 1px 5px 5px rgba(217, 171, 34, 0.85);
 }
 .instrucciones, .title{
   margin: 10px 0px 10px 0px;
@@ -55,4 +55,16 @@ body{
   width: 250px;
   margin-top: 30px;
   background-color:  #e47e1f;
+}
+.alert {
+  position: absolute;
+  width: 1150px;
+  height: 50px;
+  margin-top: 200px;
+  text-align: center;
+  text-align-last: center;
+}
+
+#modal {
+  text-align: center;
 }
