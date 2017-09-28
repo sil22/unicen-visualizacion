@@ -33,7 +33,8 @@ let figureSelected = null;
 let inserts = [];
 let color = 'white';
 let cronometro;
-
+let contador_s = 0;
+let contador_m = 0;
 
 
 let circle1 = new Circle(100,200,50,color,1,image1); //nivel 1
@@ -89,16 +90,15 @@ function comenzarJuego() {
 				for (let i = 0; i < figuresContour.length; i++) {
 					if(figuresContour[i].detectPoint(event) && figuresContour[i].isTheSame(figureSelected.figura) ){
 						inserts.push(figureSelected);
-						console.log(inserts.length);
 						if (inserts.length === figures.length) {
 							detenerReloj();
+							ganaste.innerHTML = 'Tardaste ' + ' ' + contador_s + ':' + contador_m;
 							$('#modalWin').modal('show');
 							refresh();
 							ctx.clearRect(0,0,canvas.width, canvas.height);
 							for (let i = 0; i < figures.length; i++) {
 								figures[i].posX = event.clientX - figures[i].posX + 60;
 								figures[i].posY = event.clientY - figures[i].posY + 60;
-								console.log(figures[i].posX,figures[i].posY);
 								figuresContour[i].drawContour(ctx);
 								figures[i].draw(ctx);
 							}
@@ -116,8 +116,7 @@ function detenerReloj() {
 }
 
 function cargarReloj() {
-	contador_s = 0;
-	contador_m = 0;
+
 	s = document.getElementById("segundos");
 	m = document.getElementById("minutos");
 	cronometro = setInterval(
@@ -134,6 +133,8 @@ function cargarReloj() {
 			contador_s++;
 
 		},1000);
+		console.log(contador_m,contador_s);
+
 
 	}
 

@@ -50,4 +50,10 @@ class Circle {
     return tipo === this.figura;
   }
 
+  setPosIni(){
+    this.posX = this.posX;
+    this.posY = this.posY;
+    this.radio = this.radio;
+  }
+
 }
