@@ -76,7 +76,6 @@ p {
 
 .img-box {
   width: 300px;
-  /*border: solid rgba(185, 146, 30, 0.19) 2px;*/
   margin: 0px 20px 0px 20px;
   background-color: rgba(185, 146, 30, 0.15);
   padding: 10px;
@@ -87,10 +86,44 @@ p {
   display: inline-flex;
 }
 
-.form, .map {
-  width: 500px;
+.form-box{
+  font-size: 20px;
 }
 
-.footer-nav{
+.form-box, .map-box{
+  margin-right: 50px;
+  margin-left: 50px;
+  display: inline-block;
+  width: 350px;
+}
+
+input{
+  width: 250px;
+}
+
+.map {
+  width: 400px;
+}
+
+.footer-social-icon{
+  width: 50px;
+  height: 50px;
+}
+.footer-nav-menu>li, .footer-nav-menu-icons>li{
   display: inline;
+}
+
+.footer-nav-menu>li{
+  margin: 0px 10px 0px 10px;
+}
+.footer-nav-menu{
+  margin-left: 300px;
+}
+
+.footer-nav-menu-icons>li{
+  float: right;
+}
+
+.footer-nav-menu-icons{
+  margin-right: 200px;
 }
