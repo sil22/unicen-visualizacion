@@ -1,0 +1,25 @@
+#image {
+  width: 100px;
+   -webkit-transition: width 2s; /* Safari */
+   transition: width 2s;
+   float: left;
+}
+
+#image:hover{
+  width: 300px;
+}
+
+.prueba {
+  width: 100px;
+   height: 100px;
+   background: red;
+   -webkit-transition: width 2s;
+   transition: height width 4s;
+   float: left;
+}
+
+.prueba:hover{
+  height: 300px;
+  width: 300px;
+
+}

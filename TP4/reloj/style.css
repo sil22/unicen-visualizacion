@@ -1,0 +1,32 @@
+@keyframes needle-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+   transform: rotate(360deg);
+  }
+}
+
+#seg {
+
+  animation-name: needle-rotate;
+  animation-duration: 60s;
+}
+
+#min {
+
+  animation-name: needle-rotate;
+  animation-duration: 120s;
+}
+
+#hora {
+
+  animation-name: needle-rotate;
+  animation-duration: 3600s;
+}
+
+#reloj, #hora, #min, #seg {
+  width: 400px;
+  height:400px;
+  position: absolute;
+}
