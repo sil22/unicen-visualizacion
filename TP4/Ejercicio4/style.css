@@ -1,0 +1,21 @@
+.tipito{
+  width: 120px;
+  height: 170px;
+  position: absolute;
+  background: url('tipo.png') left top;
+}
+
+@keyframes play {
+  100%{
+    background-position-x: -672px;
+  }
+}
+
+
+
+/*.back{
+  width: 600px;
+  height: 300px;
+  background: url('fondo4.jpg') left center;
+  animation: play 1s steps(6) infinite;
+}*/

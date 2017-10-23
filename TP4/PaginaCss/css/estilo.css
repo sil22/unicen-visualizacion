@@ -25,16 +25,17 @@ a {
   font-size: 20px;
   display: inline-flex;
   list-style: none;
-  margin-left: 500px;
-  border: solid rgba(185, 146, 30, 0.49) 1px;
+  margin-left: 400px;
   background-color: rgba(131, 101, 12, 0.22);
   border-radius: 15px;
   padding: 20px;
   position: relative;
+  width: 750px;
 }
 
 .main-navbar>li{
   margin: 0px 25px 0px 25px;
+  padding-left: 50px;
 }
 
 .hamburger{
@@ -51,11 +52,9 @@ h2{
   width: 1200px;
 }
 
-video {
-  background-color: rgba(185, 146, 30, 0.19);
-}
-video,.slider-text {
-  width: 500px;
+
+.video,.slider-text {
+  width: 550px;
   margin-left: 50px;
 }
 
@@ -102,28 +101,39 @@ input{
 }
 
 .map {
-  width: 400px;
+  width: 300px;
 }
 
+.footer-nav {
+  width: 1400px;
+  background-color: rgba(131, 101, 12, 0.22);
+  border-radius: 15px;
+
+
+}
 .footer-social-icon{
   width: 50px;
   height: 50px;
 }
+
 .footer-nav-menu>li, .footer-nav-menu-icons>li{
   display: inline;
 }
 
-.footer-nav-menu>li{
-  margin: 0px 10px 0px 10px;
+.footer-nav{
+  display: inline-block;
 }
-.footer-nav-menu{
-  margin-left: 300px;
+
+  .footer-nav-left, .footer-nav-center, .footer-nav-right{
+  display: inline-block;
+  margin-left: 30px;
+
 }
 
 .footer-nav-menu-icons>li{
-  float: right;
+  padding: 8px;
 }
 
-.footer-nav-menu-icons{
-  margin-right: 200px;
+.footer-nav-menu>li{
+  padding: 10px;
 }

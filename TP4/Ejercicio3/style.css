@@ -1,3 +1,5 @@
+
+
 @keyframes needle-rotate {
   from {
     transform: rotate(0deg);
@@ -8,21 +10,15 @@
 }
 
 #seg {
-
-  animation-name: needle-rotate;
-  animation-duration: 60s;
+  animation: needle-rotate 60s steps(60) infinite;
 }
 
 #min {
-
-  animation-name: needle-rotate;
-  animation-duration: 120s;
+  animation: needle-rotate 3600s infinite;
 }
 
 #hora {
-
-  animation-name: needle-rotate;
-  animation-duration: 3600s;
+  animation: needle-rotate 21600s infinite;
 }
 
 #reloj, #hora, #min, #seg {
