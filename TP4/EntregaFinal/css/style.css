@@ -1,0 +1,108 @@
+#player{
+  height: 126px;
+  width: 130px;
+  position: absolute;
+  margin-top: 220px;
+}
+
+.player-stop{
+  background: url('../images/waiting.png');
+  animation: player-wait 1.2s steps(10) infinite;
+}
+
+.player-run{
+  background: url('../images/run.png');
+  animation: player-run 1s steps(8) infinite;
+}
+
+.player-jump{
+  background: url('../images/jump2.png');
+  animation: player-jump 1s steps(10) infinite;
+}
+
+.player-die{
+  background: url('../images/die.png');
+  animation: player-die 1s steps(10) infinite;
+}
+
+#background-1{
+  background: url('../images/fondo_cielo.png') right center;
+  height: 280px;
+  width: 1300px;
+  z-index: 2;
+}
+
+#background-2{
+  background: url('../images/desert.png') right top;
+  height: 450px;
+  width: 1300px;
+  position: absolute;
+  z-index: 1;
+}
+
+#roca{
+  background: url('../images/Roca.png');
+  height: 144px;
+  width: 201px;
+  margin-top: 250px;
+  margin-left: 300px;
+  transform: scale(0.5);
+}
+
+@keyframes player-run {
+  0%{
+    background-position-x: 0px;
+  }
+  100%{
+    background-position-x: -1200px;
+  }
+}
+@keyframes player-wait {
+  0%{
+    background-position-x: 0px;
+  }
+  100%{
+    background-position-x: -1496px;
+  }
+}
+
+@keyframes player-jump {
+  0%{
+    background-position-x: 0px;
+  }
+  100%{
+    background-position-x: -1496px;
+  }
+
+  0%,100% {transform: translateY(0);}
+  50% {transform: translateY(-90px);}
+
+}
+
+@keyframes player-die {
+  0%{
+    background-position-x: 0px;
+  }
+  100%{
+    background-position-x: -1268px;
+  }
+}
+
+
+@keyframes back1 {
+  0%{
+    background-position-x: 0px;
+  }
+  100%{
+    background-position-x: -1280px;
+  }
+}
+
+@keyframes back2 {
+  0%{
+    background-position-x: 0px;
+  }
+  100%{
+    background-position-x: -800px;
+  }
+}
