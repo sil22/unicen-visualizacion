@@ -1,3 +1,13 @@
+
+.title{
+  margin-left: 400px;
+}
+
+.flechas{
+  margin-top: 0px;
+  transform: scale(0.3);
+}
+
 #player{
   height: 126px;
   width: 130px;
@@ -17,7 +27,7 @@
 
 .player-jump{
   background: url('../images/jump2.png');
-  animation: player-jump 1s steps(10) infinite;
+  animation: player-jump 1.5s steps(10) infinite;
 }
 
 .player-die{
@@ -25,28 +35,33 @@
   animation: player-die 1s steps(10) infinite;
 }
 
-#background-1{
+.cielo{
   background: url('../images/fondo_cielo.png') right center;
   height: 280px;
-  width: 1300px;
+  width: 1300px;s
   z-index: 2;
+  animation: back1 linear 2s infinite paused;
+  margin-left: 50px;
+
 }
 
-#background-2{
+.cactus{
   background: url('../images/desert.png') right top;
   height: 450px;
   width: 1300px;
   position: absolute;
   z-index: 1;
+  animation: back2 linear 2s infinite paused;
 }
 
-#roca{
+.roca{
   background: url('../images/Roca.png');
   height: 144px;
   width: 201px;
   margin-top: 250px;
-  margin-left: 300px;
+  margin-left: 100px;
   transform: scale(0.5);
+  display: inline-block;
 }
 
 @keyframes player-run {

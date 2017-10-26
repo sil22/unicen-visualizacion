@@ -1,3 +1,17 @@
+function Enemy(id){
+  this.posX = 300;
+  this.posY = 300;
+  this.enemy = document.getElementById(id);
+
+
+}
+
+Enemy.prototype.move = function () {
+
+};
+
+
+
 // update(){
 // // mofico x y
 // // cada update resto x

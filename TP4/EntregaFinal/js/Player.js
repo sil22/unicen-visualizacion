@@ -1,20 +1,26 @@
 function Player() {
   this.player = document.getElementById('player');
+  this.move ='';
 }
 
 Player.prototype.run = function(){
+  this.move = 'running';
   this.player.className = "player-run";
 }
 
+Player.prototype.stop = function(){
+  this.move = 'stopped';
+  this.player.className = "player-stop";
+}
 
-  function run() {
-    // this.
+Player.prototype.jump = function(){
+  this.player.className = "player-jump";
+}
 
-  }
+Player.prototype.die = function(){
+  this.player.className = "player-die";
+}
 
-  function jump() {
-
-  }
 
 //   function setJumping() { // tecla para arriba
 //     //player.isJumping = true;
@@ -27,16 +33,3 @@ Player.prototype.run = function(){
 //
 //   }
 //
-//   function stop() {
-//
-//   }
-//
-//   function figth() {
-//
-//   }
-//
-//   function die() {
-//
-//   }
-//
-// }
