@@ -1,3 +1,5 @@
+$('.carousel').carousel();
+
 let cb = new Codebird;
 
 $(document).ready(function() {
@@ -6,7 +8,12 @@ $(document).ready(function() {
   console.log('entro');
 });
 
-$("#lista-img").hide();
+// $('#tweet').click((e) => {
+//     e.preventDefault();
+//     partialRender('carousel.html');
+// });
+
+// $("#lista-img").hide();
 
 $("#tweet").click(function(event) {
   event.preventDefault();
@@ -41,3 +48,22 @@ $("#tweet").click(function(event) {
     },
   );
 });
+
+
+
+function partialRender(url, fnsc){
+  $.ajax({
+    url: url,
+    method:"GET",
+    dataType: "html",
+    success: function(data){
+      $('#content').html(data);
+      if (fnsc) {
+        fnsc();
+      }
+    },
+    error: function(){
+      alert("Error. Intente mas tarde por favor.");
+    }
+  });
+}
