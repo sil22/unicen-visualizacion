@@ -2,22 +2,65 @@ body{
 	background-color: rgba(145, 237, 209, 0.8);
 }
 
+h3{
+	font-weight: bold;
+	color:#605b59;
+}
+.navbar{
+	justify-content: flex-start;
+}
+
+.help{
+	margin-left: 1150px;
+	border-radius: 100px;
+	margin-top: 30px;
+	transform: scale(0.8);
+}
+
 .icon{
-	width: 50px;
-	height: 50px;
+	width: 60px;
+	height: 60px;
 	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.input-search {
+	margin-top: 200px;
+	border-radius: 100px;
 }
 
 ul{
 	list-style-type: none;
 }
+
 li{
 	display: inline-block;
 	margin-bottom: 20px;
+}
 
+button>i>.fa>.fa-question{
+	border-radius: 100px !important;
 }
 
 #tweet{
-	width: 30px;
-	height: 30px;
+	width: 50px;
+	height: 50px;
+	border-radius: 20px;
+}
+
+#tweet-search{
+	border-radius: 15px;
+	margin-right: 10px;
+}
+
+.btn , .btn-secondary{
+	background-color: #605b59;
+	border-color: #605b59;
+}
+
+footer{
+	margin-left: 500px;
+	margin-top: 300px;
+	color:#605b59;
+
 }
