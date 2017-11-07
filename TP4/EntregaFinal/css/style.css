@@ -1,4 +1,3 @@
-
 .title{
   margin-left: 400px;
 }
@@ -27,18 +26,18 @@
 
 .player-jump{
   background: url('../images/jump2.png');
-  animation: player-jump 1.5s steps(10) infinite;
+  animation: player-jump 2s steps(10) infinite;
 }
 
 .player-die{
   background: url('../images/die.png');
-  animation: player-die 1s steps(10) infinite;
+  animation: player-die 1s steps(10);
 }
 
 .cielo{
   background: url('../images/fondo_cielo.png') right center;
   height: 280px;
-  width: 1300px;s
+  width: 1300px;
   z-index: 2;
   animation: back1 linear 2s infinite paused;
   margin-left: 50px;
@@ -54,14 +53,16 @@
   animation: back2 linear 2s infinite paused;
 }
 
-.roca{
-  background: url('../images/Roca.png');
-  height: 144px;
-  width: 201px;
-  margin-top: 250px;
-  margin-left: 100px;
-  transform: scale(0.5);
+.enemy{
+  background: url('../images/enemy.png');
+  transform: scaleX(-1) scaleY(1); /*lo doy vuelta*/
+  height: 100px;
+  width: 83px;
+  /*left: 200px;*/
   display: inline-block;
+  position: absolute;
+  /*top: 220px;*/
+  animation: enemy 1s steps(10) infinite;
 }
 
 @keyframes player-run {
@@ -90,7 +91,7 @@
   }
 
   0%,100% {transform: translateY(0);}
-  50% {transform: translateY(-90px);}
+  50% {transform: translateY(-150px);}
 
 }
 
@@ -119,5 +120,14 @@
   }
   100%{
     background-position-x: -800px;
+  }
+}
+
+@keyframes enemy {
+  0%{
+    background-position-x: 0px;
+  }
+  100%{
+    background-position-x: -836px;
   }
 }

@@ -1,6 +1,6 @@
 function Player() {
   this.player = document.getElementById('player');
-  this.move ='';
+  this.move ='stopped';
 }
 
 Player.prototype.run = function(){
@@ -14,11 +14,21 @@ Player.prototype.stop = function(){
 }
 
 Player.prototype.jump = function(){
+  this.move = 'jumping';
   this.player.className = "player-jump";
+  document.onkeyup = function (e) {
+    if(e.code === "ArrowUp"){
+    player.stop();
+    game.stopBackground();
+    }
+  }
 }
 
 Player.prototype.die = function(){
+  this.move = 'die';
   this.player.className = "player-die";
+  game.stopBackground();
+  
 }
 
 

@@ -1,12 +1,29 @@
 function Enemy(id){
-  this.posX = 300;
-  this.posY = 300;
+  this.id = id;
+  this.posX = 1000 +(id * 350);
+  this.posY = 250;
+  this.radio = 60;
   this.enemy = document.getElementById(id);
-
-
+  this.enemy.style.left = this.posX + 'px';
+  this.enemy.style.top = this.posY + 'px';
 }
 
 Enemy.prototype.move = function () {
+  if(player.move === 'stopped'){
+    this.posX = this.posX-5;
+  }
+  else {
+    this.posX = this.posX-10;
+  }
+  if((this.posX+this.radio) < 0){
+    this.posX = 1000 + Math.floor((Math.random() * 10));
+
+  }
+  this.enemy.style.left = this.posX + 'px';
+
+};
+
+Enemy.prototype.methodName = function () {
 
 };
 

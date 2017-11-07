@@ -1,20 +1,14 @@
-player = new Player();
-game = new Game(player);
-game.player.stop();
-
 function Game(player) {
-  enemies =[];
+  this.enemies =[];
   this.player = player;
   this.lifes = 5;
   for (let i = 0; i < 4; i++) {
-    enemy = new Enemy(i);
-    enemies.push(enemy);
-    console.log(enemies);
+    let enemy = new Enemy(i);
+    this.enemies.push(enemy);
   }
 }
 
 Game.prototype.startBackground = function () {
-
   document.getElementById('background-1').style.animationPlayState = 'running';
   document.getElementById('background-2').style.animationPlayState = 'running';
 
@@ -25,8 +19,7 @@ Game.prototype.stopBackground = function () {
   document.getElementById('background-2').style.animationPlayState = 'paused';
 }
 
-Game.prototype.update = function() {
-  // setInterval(this.update(), 100);
+Game.prototype.update = function(e) {
   document.onkeydown = function(e) {
     switch(event.code) {
       case "ArrowRight":
@@ -47,19 +40,32 @@ Game.prototype.update = function() {
     }
   }
 
-}
+  for(let i = 0; i < this.enemies.length; i++){
+    this.enemies[i].move();
+    if(this.colition(this.player,this.enemies[i])){
+      // alert('toco!');
+      this.player.die();
+      this.lifes = this.lifes-1;
+      console.log(this.lifes);
+    }
+    if(this.lifes === 0) {
+    // alert('perdiste' );
+    }
 
-document.onkeydown = function(e) {
-  switch(event.code) {
-    case "ArrowRight":
-    game.update();
-    enemy.move();
-    break;
-    default:
-    player.stop();
-    break;
   }
 }
+
+Game.prototype.colition = function (player,enemy) {
+  if(this.player.move != 'jumping'){
+    if (enemy.posX < 110 && enemy.posX > 50) {
+      return true;
+    }
+
+  }
+  return false
+};
+
+
 
 
 // class Game {
