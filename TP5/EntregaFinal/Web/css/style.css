@@ -44,7 +44,7 @@ button>i>.fa>.fa-question{
 
 #tweet{
 	width: 50px;
-	height: 50px;
+	height: 40px;
 	border-radius: 20px;
 }
 
@@ -61,11 +61,39 @@ button>i>.fa>.fa-question{
 .icon-table{
 	font-size: 25px;
 	padding-top: 10px;
+	margin-top: 10px;
+	margin-left: 5px;
 }
 
-.search-bar	{
-	margin-left: 50px;
+.search-bar{
+	width: 300px;
+	margin-left: 250px;
+	margin-bottom: 10px;
+	margin-top: 10px;
 }
+
+.mini-carousel>div>img{
+	width: 200px;
+	height: 150px;
+	padding-top: 25px;
+	padding-right: 30px;
+}
+.fa-chevron-left  {
+	margin-left: 150px;
+	margin-top: 80px;
+}
+
+.fa-chevron-right{
+	margin-top: 80px;
+}
+
+.fa-step-backward, .fa-play , .fa-step-forward, .fa-pause {
+	font-size: 40px;
+	padding: 10px;
+	width: 100px;
+	z-index: -1;
+}
+
 footer{
 	margin-left: 500px;
 	margin-top: 300px;
