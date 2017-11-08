@@ -11,9 +11,7 @@ h3{
 }
 
 .help{
-	margin-left: 1150px;
 	border-radius: 100px;
-	margin-top: 30px;
 	transform: scale(0.8);
 }
 
@@ -95,8 +93,12 @@ button>i>.fa>.fa-question{
 }
 
 footer{
-	margin-left: 500px;
-	margin-top: 300px;
+
 	color:#605b59;
 
+}
+
+.containerNav {
+ 	width: 100%;
+ 	margin: 0px;
 }
