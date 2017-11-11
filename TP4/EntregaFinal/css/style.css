@@ -1,7 +1,3 @@
-.title{
-  margin-left: 400px;
-}
-
 .flechas{
   margin-top: 0px;
   transform: scale(0.3);
@@ -10,8 +6,7 @@
 #player{
   height: 126px;
   width: 130px;
-  position: absolute;
-  margin-top: 220px;
+  margin-top: 170px;
 }
 
 .player-stop{
@@ -35,22 +30,22 @@
 }
 
 .cielo{
-  background: url('../images/fondo_cielo.png') right center;
-  height: 280px;
-  width: 1300px;
+  background: url('../images/fondo_cielo.png');
+  background-size: cover;
+  width: auto;
   z-index: 2;
   animation: back1 linear 2s infinite paused;
-  margin-left: 50px;
-
+  /*position: absolute;*/
 }
 
 .cactus{
-  background: url('../images/desert.png') right top;
-  height: 450px;
-  width: 1300px;
-  position: absolute;
+  background: url('../images/desert.png');
+  height: 400px;
+  width: auto;
+  /*position: absolute;*/
   z-index: 1;
   animation: back2 linear 2s infinite paused;
+
 }
 
 .enemy{
@@ -58,12 +53,84 @@
   transform: scaleX(-1) scaleY(1); /*lo doy vuelta*/
   height: 100px;
   width: 83px;
-  /*left: 200px;*/
   display: inline-block;
   position: absolute;
-  /*top: 220px;*/
-  animation: enemy 1s steps(10) infinite;
+  animation: enemy 0.5s steps(10) infinite;
 }
+
+.enemy-stop{
+  background: url('../images/enemy-stop.png');
+  transform: scaleX(-1) scaleY(1); /*lo doy vuelta*/
+  height: 100px;
+  width: 67px;
+  display: inline-block;
+  position: absolute;
+  animation: enemy-stop 1s steps(10) infinite;
+}
+
+
+ul{
+  list-style-type: none;
+}
+
+li{
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.reloj, .vidas, .puntos{
+  width: 300px;
+  text-align: center;
+}
+
+
+#finJuego{
+  width: 300px;
+  height: 300px;
+  margin-top: 100px;
+  position: absolute;
+  padding: 90px;
+  background-color: rgba(32, 29, 31, 0.49);
+  background-image: url('../images/Dead (1).png');
+  box-shadow: 5px 5px 5px rgba(32, 29, 31, 0.49);
+  border: rgba(32, 29, 31, 0.49) solid 2px;
+  z-index: 200;
+}
+
+#ganaste{
+  width: 500px;
+  height: 450px;
+  position: absolute;
+  background-color: white;
+  background-image: url('../images/Jump (7).png');
+  box-shadow: 5px 5px 5px rgba(32, 29, 31, 0.49);
+  border: rgba(32, 29, 31, 0.49) solid 2px;
+  z-index: 200;
+  animation: win 2s linear;
+}
+
+h4{
+  color: black;
+}
+
+h3{
+  color: white;
+  text-transform: capitalize;
+  margin-left: 10px;
+}
+
+.pos{
+  width: 300px;
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 100px;
+}
+
+
+body{
+  overflow: hidden;
+}
+
 
 @keyframes player-run {
   0%{
@@ -129,5 +196,23 @@
   }
   100%{
     background-position-x: -836px;
+  }
+}
+
+@keyframes enemy-stop {
+  0%{
+    background-position-x: 0px;
+  }
+  100%{
+    background-position-x: -675px;
+  }
+}
+
+@keyframes win {
+  0%{
+    margin-left: 0px;
+  }
+  100%{
+    margin-left: -800px;
   }
 }

@@ -2,23 +2,48 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
 
   <title>Juego</title>
 </head>
 <body>
 
-  <div class="title">
-    <img src="images/tittle.gif" alt="">
-  </div>
-
-<div class="container">
-
   <div class="cielo" id="background-1">
-    <div class="cactus" id="background-2">
-
-      <div id="player">
+    <div class="row justify-content-center">
+      <h1>Lejano Oeste</h1>
+      <div id="finJuego">
+        <h3 class="text-center">Perdiste!</h3>
+        <button type="button" class="btn btn-secondary" onclick="iniciarJuego();" name="button">Jugar otra vez!</button>
       </div>
+      <div id="ganaste">
+        <div class="pos">
+          <h4 >Ganaste!! Felicitaciones!</h4>
+          <h4>Puntos: <span id="puntosganados"></span></h4>
+          <button type="button" class="btn btn-secondary jugar" onclick="iniciarJuego();" name="button">Jugar otra vez!</button>
+        </div>
+      </div>
+   </div>
+    <div class="cactus" id="background-2">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="reloj">
+            <ul>
+              <li><h4>Cronometro</h4></li>
+              <li><h5><span id="minutos"> 00</span> : <span id="segundos">00</span></h5></li>
+            </ul>
+          </div>
+            <div class="vidas">
+              <h4>Vidas: <span id="vidas">5</span></h4>
+            </div>
+            <div class="puntos">
+              <h4>Puntos: <span id="puntos">0</span></h4>
+            </div>
+        </div>
+      <div id="player">
+
+      </div>
+
       <div class="enemy" id="0"></div>
       <div class="enemy" id="1"></div>
       <div class="enemy" id="2"></div>
@@ -27,11 +52,13 @@
     </div>
   </div>
   </div>
+</div>
+
 
   <div class="flechas">
     <img src="images/flechas2.png" style="display:none"  alt="">
-
-  </div>
+</div>
+</div>
 
   <script src="js/Player.js" charset="utf-8"></script>
   <script src="js/Enemy.js" charset="utf-8"></script>

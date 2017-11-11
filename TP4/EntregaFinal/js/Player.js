@@ -4,7 +4,6 @@ function Player() {
 }
 
 Player.prototype.run = function(){
-  this.move = 'running';
   this.player.className = "player-run";
 }
 
@@ -25,10 +24,8 @@ Player.prototype.jump = function(){
 }
 
 Player.prototype.die = function(){
-  this.move = 'die';
   this.player.className = "player-die";
-  game.stopBackground();
-  
+  // game.stopBackground();
 }
 
 

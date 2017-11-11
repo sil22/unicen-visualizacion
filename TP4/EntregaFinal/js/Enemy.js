@@ -1,11 +1,13 @@
 function Enemy(id){
   this.id = id;
   this.posX = 1000 +(id * 350);
-  this.posY = 250;
+  this.posY = 300;
   this.radio = 60;
   this.enemy = document.getElementById(id);
   this.enemy.style.left = this.posX + 'px';
   this.enemy.style.top = this.posY + 'px';
+  this.state = "habilitado";
+  this.action = "corriendo";
 }
 
 Enemy.prototype.move = function () {
@@ -16,16 +18,17 @@ Enemy.prototype.move = function () {
     this.posX = this.posX-10;
   }
   if((this.posX+this.radio) < 0){
-    this.posX = 1000 + Math.floor((Math.random() * 10));
-
+    this.state = "habilitado";
+    this.posX = 1500 + Math.floor((Math.random() * 100));
   }
   this.enemy.style.left = this.posX + 'px';
 
 };
 
-Enemy.prototype.methodName = function () {
-
+Enemy.prototype.stop = function () {
+  this.enemy.className = "enemy-stop";
 };
+
 
 
 

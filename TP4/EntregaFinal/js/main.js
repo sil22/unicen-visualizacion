@@ -1,8 +1,18 @@
 player = new Player();
 game = new Game(player);
-game.player.stop();
-game.update();
+let cronometro;
+let contador_s = 0;
+let contador_m = 0;
+game.cargarReloj();
 
-  idjugar = setInterval(function(){
+document.getElementById('finJuego').style.display = 'none';
+document.getElementById('ganaste').style.display = 'none';
+
+function iniciarJuego() {
+  location.reload();
+}
+
+
+  idJuego = setInterval(function(){
     game.update();
   }, 100);
