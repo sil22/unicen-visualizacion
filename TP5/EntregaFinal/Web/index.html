@@ -5,6 +5,8 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -14,21 +16,18 @@
 </head>
 <body>
 
+<!-- INDEX -->
   <div class="index">
-
-    <!-- nav -->
     <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand" href="index.html">
         <img src="images/hashtag_icon.png" class="img-responsive icon d-inline-block align-top"  alt="">
       </a>
+      <p class="titulo">Momentos</p>
 
       <div class="">
         <button class=" btn btn-secondary help" type="button" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-question" aria-hidden="true"></i></button>
       </div>
     </nav>
-    <!-- end navbar -->
-
-    <!-- #container-->
     <div class="container">
       <div class="row justify-content-md-center input-search">
         <!-- #search-bar-->
@@ -41,14 +40,10 @@
           </div>
         </div>
         <!-- #end search-bar-->
-        <div class="col-md-8 col-md-offset-4" id="content">
-          <ul id="lista-img">
-          </ul>
-        </div>
       </div>
-      <!-- # end content-->
     </div>
   </div>
+  <!-- END INDEX -->
 
   <div class="small-nav">
     <!-- #nav -->
@@ -70,6 +65,9 @@
   </div>
 
   <!-- CAROUSEL FIRST TIME HIDDEN  -->
+  <div class="nohay">
+
+  </div>
   <div class="carousel">
     <div class="container">
       <div class="row">
@@ -79,7 +77,7 @@
         </div>
         <div class="col-10" id="content">
           <div class="likes">
-            <h5 class="card-body"><i class="like fa fa-heart-o" aria-hidden="true"></i>3.581</h>
+            <h5><i class="like fa fa-heart-o" aria-hidden="true"></i></h5>
             </div>
             <div class="controls">
               <i class="fa fa-step-backward" aria-hidden="true"></i>
@@ -89,7 +87,7 @@
               <i class="fa fa-expand" aria-hidden="true"></i>
             </div>
             <div class="big-image">
-              <img class="d-block w-100" src="images/paisaje.jpg">
+              <img class="d-block" src="">
             </div>
           </div>
         </div>
@@ -98,21 +96,10 @@
           <div class="left">
             <i class="fa fa-chevron-left" aria-hidden="true"></i>
           </div>
-          <div class="col-sm-2">
-            <img src="images/paisaje.jpg" alt="">
+          <div id="insert-img">
+
           </div>
-          <div class="col-sm-2">
-            <img src="images/paisaje2.jpeg" alt="">
-          </div>
-          <div class="col-sm-2">
-            <img src="images/paisaje3.jpeg" alt="">
-          </div>
-          <div class="col-sm-2">
-            <img src="images/image5.jpg" alt="">
-          </div>
-          <div class="col-sm-2">
-            <img src="images/image6.jpg" alt="">
-          </div>
+
           <div class="right">
             <i class="fa fa-chevron-right" aria-hidden="true"></i>
           </div>
@@ -125,13 +112,13 @@
 
     <!-- GRID FIRST TIME HIDDEN  -->
     <div class="grid">
-      <div class="container container-grid">
-        <div class="row">
+      <div class="container">
+        <div class="row ">
           <div class="col-1 icons">
-            <a href="carousel.html"><i class="fa fa-picture-o icon-display" aria-hidden="true"></i></a>
-            <a href="grid.html"><i class="fa fa-th icon-display" aria-hidden="true"></i></a>
+            <i class="fa fa-picture-o icon-display" aria-hidden="true"></i>
+            <i class="fa fa-th icon-display" aria-hidden="true"></i>
           </div>
-          <div class="col-3" id="grid-image2">
+          <div class="col-3 grid-image2" >
             <div class="card" style="width: 15rem;">
               <img class=" card-img-top" src="images/image3.jpg" alt="...">
               <div class="">
@@ -226,7 +213,7 @@
                     </div>
                   </div>
                 </div>
-                
+
                 <footer id="footerIndex">
                   <p>Interfaces - Silvina Muñoz | Eugenia Zelenka</p>
                 </footer>

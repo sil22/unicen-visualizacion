@@ -9,6 +9,8 @@ h3{
 .navbar{
 	justify-content: flex-start;
 	height: 50px;
+	padding: 0px;
+
 }
 
 .help{
@@ -92,7 +94,7 @@ button>i>.fa>.fa-question{
 
 .search-bar{
 	width: 300px;
-	margin-left: 650px;
+	left: 660px;
 	margin-bottom: 10px;
 	margin-top: 10px;
 }
@@ -167,13 +169,9 @@ footer{
 	margin-top: 20px;
 }
 
-
-.containerNav {
-	width: 100%;
-}
-
 .card{
 	margin: 10%;
+	/*transform: rotate(5deg);*/
 }
 
 .page-link {
@@ -184,6 +182,14 @@ footer{
 	margin-right: 5%;
 	margin-top: 0px;
 	margin-left: 8px;
+}
+
+.titulo {
+	position: absolute;
+	left: 100px;
+	font-size: 30px;
+	color: #605b59;
+	font-family: 'Pacifico', cursive;
 }
 
 .card-body {
@@ -200,7 +206,7 @@ a>.icon-display{
 	transform: scale(1.5);
 }
 
-#grid-image2 {
+.grid-image2 {
 	margin-left: 50px;
 }
 
