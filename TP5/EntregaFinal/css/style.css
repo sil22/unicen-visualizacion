@@ -1,5 +1,30 @@
-body{
+body {
 	background-color: rgba(145, 237, 209, 0.8);
+}
+
+.justify-content-md-center {
+	width: 100%;
+}
+
+.insert-img {
+	padding: 90px;
+}
+
+.big-image {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	margin-left: 25px;
+}
+.prueba-carousel{
+	height: 550px;
+}
+.titulo {
+	position: absolute;
+	left: 100px;
+	font-size: 30px;
+	color: #605b59;
+	font-family: 'Pacifico', cursive;
 }
 
 h3{
@@ -32,6 +57,7 @@ h3{
 .input-search {
 	margin-top: 200px;
 	border-radius: 100px;
+	margin-bottom: 250px;
 }
 
 ul{
@@ -47,14 +73,18 @@ button>i>.fa>.fa-question{
 	border-radius: 100px !important;
 }
 
-#tweet{
+#tweetC, #tweet{
 	width: 40px;
 	height: 40px;
 	border-radius: 100px;
-
 }
-#footerIndex {
- 	margin-top: 18%;
+
+.loading{
+	 width: 100px;
+	 height: 100px;
+	 margin-top: 10%;
+	 position: absolute;
+	 z-index: 20;
  }
 
  .fa-question {
@@ -63,20 +93,8 @@ button>i>.fa>.fa-question{
  	margin-left: -5px;
  }
 
-/*.input-group{
-	animation: width 2s linear;
-}
-
-@keyframes width {
-	from {
-	}
-	to {
-		width: 50%;
-	}
-}*/
-
-#tweet-search{
-	border-radius: 15px;
+.tweet-search, .tweet-searchC{
+	border-radius: 15px !important;
 	margin-right: 10px;
 }
 
@@ -102,7 +120,8 @@ button>i>.fa>.fa-question{
 .mini-carousel>div>img{
 	width: 200px;
 	height: 150px;
-	padding-top: 25px;
+	padding-top: 35px;
+	padding-left: 30px;
 	padding-right: 30px;
 	transition: width 2s;
 }
@@ -116,6 +135,8 @@ margin-left: 4px;
 	background-color: rgba(72, 75, 71, 0.74);
 	color: white;
 	padding: 10px;
+	border-radius: 7px;
+	cursor: pointer;
 }
 
 .fa-chevron-right{
@@ -124,6 +145,9 @@ margin-left: 4px;
 	padding: 10px;
 	background-color: rgba(72, 75, 71, 0.74);
 	color: white;
+	border-radius: 7px;
+	cursor: pointer;
+
 }
 
 .fa-step-backward, .fa-play , .fa-step-forward,  .fa-pause{
@@ -131,31 +155,62 @@ margin-left: 4px;
 	padding: 10px;
 	width: 100px;
 	color: white;
+	cursor: pointer;
 }
 
 
-.fa-expand{
+.fa-expand {
 	font-size: 30px;
  	padding: 10px;
 	color: white;
 }
 
-.big-image{
-	box-shadow:0 0 2em black;
-	margin-left: 20px;
+#edge {
+	margin-right: 0px;
 }
 
-.controls{
+.d-block {
+	box-shadow:0 0 2em black;
+	transition: all 1s linear;
+}
+
+.heart {
+	animation: 3s color linear infinite;
+	/*animation: latidos .5s infinite;*/
+	transform-origin: center;
+	display: inline-block;
+	/*display: inline-block;
+	font-size: 150px;
+	text-shadow: 0 0 10px #222,1px 1px  0 #450505;
+	animation: latidos .5s infinite;
+	transform-origin: center;*/
+	margin: 10px;
+	color: white;
+}
+
+.likes {
+	margin: 10px;
+	color: white;
+}
+
+
+.info {
+	position: relative;
+	top: 545px;
+	width: 50px;
+	left: 30px;
+	background-color: rgba(72, 75, 71, 0.74);
+	text-align: center;
+	border-radius: 7px;
+	display: inline-block;
+}
+
+.controls {
 	position: absolute;
 	margin: 450px 0px 0px 250px;
 	background-color: rgba(72, 75, 71, 0.74);
-}
+	border-radius: 7px;
 
-.likes{
-	position: absolute;
-	margin: 450px 0px 0px 40px;
-	width: 200px;
-	color: white;
 }
 
 .icons{
@@ -169,27 +224,22 @@ footer{
 	margin-top: 20px;
 }
 
-.card{
-	margin: 10%;
+.card {
+	margin: 3%;
+	display: inline-grid;
 	/*transform: rotate(5deg);*/
+}
+
+.card-img-top{
+height: 200px;
+}
+
+.card-img-top:hover {
+	transform: scale(1.3);
 }
 
 .page-link {
 	color: #605b59 !important;
-}
-
-.like {
-	margin-right: 5%;
-	margin-top: 0px;
-	margin-left: 8px;
-}
-
-.titulo {
-	position: absolute;
-	left: 100px;
-	font-size: 30px;
-	color: #605b59;
-	font-family: 'Pacifico', cursive;
 }
 
 .card-body {
@@ -206,14 +256,7 @@ a>.icon-display{
 	transform: scale(1.5);
 }
 
-.grid-image2 {
-	margin-left: 50px;
-}
-
-.grid-img {
-	margin-left: 145px;
-}
-
-#content{
-	margin-top: 30px;
+.grid-image {
+	width: 1000px;
+	display: inline-block;
 }
