@@ -4,9 +4,10 @@ let cronometro;
 let contador_s = 0;
 let contador_m = 0;
 game.cargarReloj();
+MAX_POINTS = 35;
 
-document.getElementById('finJuego').style.display = 'none';
-document.getElementById('ganaste').style.display = 'none';
+$('#finJuego').hide();
+$('#ganaste').hide();
 
 function iniciarJuego() {
   location.reload();

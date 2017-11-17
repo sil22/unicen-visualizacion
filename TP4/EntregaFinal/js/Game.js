@@ -27,6 +27,7 @@ Game.prototype.update = function(e) {
       case "ArrowRight":
       player.run();
       game.startBackground();
+      // $('tool-tip').hide();
       break;
       case "ArrowUp":
       player.jump();
@@ -46,6 +47,10 @@ Game.prototype.update = function(e) {
     this.enemies[i].move();
     if(this.enemies[i].state != "inhabilitado" && this.colition(this.player,this.enemies[i])){
       game.countLifes();
+      player.die();
+      game.stopBackground();
+      $('[data-toggle="tooltip"]').tooltip();
+      $('.tool-tip').tooltip('show');
       this.enemies[i].state = "inhabilitado";
     }
     else {
@@ -54,7 +59,7 @@ Game.prototype.update = function(e) {
     if(this.lifes <= 0){
       this.loose();
     }
-    if(this.points >= 10){
+    if(this.points >= MAX_POINTS){
       this.win();
     }
   }
@@ -65,6 +70,9 @@ Game.prototype.loose = function () {
   game.detenerReloj();
   this.player.die();
   game.stopBackground();
+  for (var i = 0; i < this.enemies.length; i++) {
+    this.enemies[i].stop();
+  }
   document.getElementById('vidas').innerHTML = '0';
   document.getElementById('finJuego').style.display = 'block';
 
@@ -74,6 +82,9 @@ Game.prototype.win = function () {
   clearInterval(idJuego);
   game.detenerReloj();
   game.stopBackground();
+  for (var i = 0; i < this.enemies.length; i++) {
+    this.enemies[i].stop();
+  }
   this.player.stop();
   document.getElementById('ganaste').style.display = 'block';
   document.getElementById('puntosganados').innerHTML = this.points;

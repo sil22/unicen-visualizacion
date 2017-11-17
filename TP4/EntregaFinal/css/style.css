@@ -1,6 +1,12 @@
-.flechas{
-  margin-top: 0px;
-  transform: scale(0.3);
+body{
+  font-family: 'VT323', monospace;
+  font-family: 'Aldrich', sans-serif;
+  overflow: hidden;
+  background-color: rgba(222, 167, 72, 0.21);
+}
+
+.title{
+  margin: 0px 0px 20px 0px;
 }
 
 #player{
@@ -27,6 +33,8 @@
 .player-die{
   background: url('../images/die.png');
   animation: player-die 1s steps(10);
+  animation-iteration-count: 0.9;
+  animation-fill-mode: forwards;
 }
 
 .cielo{
@@ -34,17 +42,15 @@
   background-size: cover;
   width: auto;
   z-index: 2;
-  animation: back1 linear 2s infinite paused;
-  /*position: absolute;*/
+  animation: back1 linear 2.3s infinite paused;
 }
 
 .cactus{
   background: url('../images/desert.png');
   height: 400px;
   width: auto;
-  /*position: absolute;*/
   z-index: 1;
-  animation: back2 linear 2s infinite paused;
+  animation: back2 linear 2.5s infinite paused;
 
 }
 
@@ -55,7 +61,7 @@
   width: 83px;
   display: inline-block;
   position: absolute;
-  animation: enemy 0.5s steps(10) infinite;
+  animation: enemy 1s steps(10) infinite;
 }
 
 .enemy-stop{
@@ -65,7 +71,7 @@
   width: 67px;
   display: inline-block;
   position: absolute;
-  animation: enemy-stop 1s steps(10) infinite;
+  animation: enemy-stop 3s steps(10);
 }
 
 
@@ -79,7 +85,7 @@ li{
 }
 
 .reloj, .vidas, .puntos{
-  width: 300px;
+  width: 320px;
   text-align: center;
 }
 
@@ -109,6 +115,26 @@ li{
   animation: win 2s linear;
 }
 
+.instrucciones{
+  width: 500px;
+  height: 250px;
+  margin-top: 10px;
+  position: absolute;
+  background-color: white;
+  box-shadow: 5px 5px 5px rgba(32, 29, 31, 0.49);
+  border: rgba(32, 29, 31, 0.49) solid 2px;
+  animation: instrucciones 2s;
+}
+
+.suma{
+  float: right;
+  text-transform: uppercase;
+}
+
+.instrucciones>h4{
+    margin-top: 10px;
+}
+
 h4{
   color: black;
 }
@@ -127,10 +153,8 @@ h3{
 }
 
 
-body{
-  overflow: hidden;
-}
 
+/*keyframes*/
 
 @keyframes player-run {
   0%{
@@ -210,9 +234,18 @@ body{
 
 @keyframes win {
   0%{
-    margin-left: 0px;
+    margin-left: -800px;
   }
   100%{
-    margin-left: -800px;
+    margin-left: 0px;
+  }
+}
+
+@keyframes instrucciones {
+  0%{
+    margin-top: -800px;
+  }
+  100%{
+    margin-left: 0px;
   }
 }

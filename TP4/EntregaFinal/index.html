@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Aldrich|VT323" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
 
@@ -11,7 +12,7 @@
 
   <div class="cielo" id="background-1">
     <div class="row justify-content-center">
-      <h1>Lejano Oeste</h1>
+      <h1 class="title">Lejano Oeste</h1>
       <div id="finJuego">
         <h3 class="text-center">Perdiste!</h3>
         <button type="button" class="btn btn-secondary" onclick="iniciarJuego();" name="button">Jugar otra vez!</button>
@@ -23,7 +24,7 @@
           <button type="button" class="btn btn-secondary jugar" onclick="iniciarJuego();" name="button">Jugar otra vez!</button>
         </div>
       </div>
-   </div>
+    </div>
     <div class="cactus" id="background-2">
       <div class="container">
         <div class="row justify-content-center">
@@ -33,37 +34,48 @@
               <li><h5><span id="minutos"> 00</span> : <span id="segundos">00</span></h5></li>
             </ul>
           </div>
-            <div class="vidas">
-              <h4>Vidas: <span id="vidas">5</span></h4>
-            </div>
-            <div class="puntos">
-              <h4>Puntos: <span id="puntos">0</span></h4>
-            </div>
+          <div class="vidas">
+            <h4>Vidas: <span id="vidas">5</span></h4>
+          </div>
+          <div class="puntos">
+            <h4>Puntos: <span id="puntos">0</span></h4>
+          </div>
         </div>
-      <div id="player">
+        <div id="player" data-toggle="tooltip" data-placement="top" title="Seguí corriendo!" class="tool-tip">
+
+        </div>
+
+        <div class="enemy" id="0"></div>
+        <div class="enemy" id="1"></div>
+        <div class="enemy" id="2"></div>
+        <div class="enemy" id="3"></div>
 
       </div>
-
-      <div class="enemy" id="0"></div>
-      <div class="enemy" id="1"></div>
-      <div class="enemy" id="2"></div>
-      <div class="enemy" id="3"></div>
-
     </div>
   </div>
+
+
+  <div class="row justify-content-center">
+    <div class="col-4 instrucciones">
+        <h4>Instrucciones</h4>
+        <p class="suma"> Si sumas 35 puntos, Ganas!!!</p>
+        <p>CORRER <img src="images/flechaCorrer.jpg" alt=""></p>
+        <p>SALTAR <img src="images/flechaArriba.png" alt=""> Mantener apretado</p>
+        <p>FRENAR <img src="images/flechaAtras.png" alt=""></p>
+    </div>
+
   </div>
-</div>
 
 
-  <div class="flechas">
-    <img src="images/flechas2.png" style="display:none"  alt="">
-</div>
 </div>
 
-  <script src="js/Player.js" charset="utf-8"></script>
-  <script src="js/Enemy.js" charset="utf-8"></script>
-  <script src="js/Game.js" charset="utf-8"></script>
-  <script src="js/main.js" charset="utf-8"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="js/Player.js" charset="utf-8"></script>
+<script src="js/Enemy.js" charset="utf-8"></script>
+<script src="js/Game.js" charset="utf-8"></script>
+<script src="js/main.js" charset="utf-8"></script>
 
 </body>
 </html>
